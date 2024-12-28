@@ -5648,14 +5648,12 @@ html.no-touch.no-reduced-motion .tile.tile-list[data-focus-method=key] .media--v
 }
 
 
-
-
-
 .component-content {
   margin-left: auto;
   margin-right: auto;
   width: 800px
 }
+
 
 @media only screen and (max-width: 1068px) {
   .component-content {
@@ -7460,4 +7458,11 @@ blockquote p {
 .book-description {
   color: #444;
   line-height: 1.6;
+}
+
+
+li > p.component-content.component {
+  all: unset; /* 清除所有默认样式 */
+  display: inline-block;
+  margin: 0;
 }
