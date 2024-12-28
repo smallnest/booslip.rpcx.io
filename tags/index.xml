@@ -2,25 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 竹简书摘</title>
-    <link>/tags/</link>
+    <link>//localhost:1313/tags/</link>
     <description>Recent content in Tags on 竹简书摘</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <copyright>鸟窝</copyright>
-    <lastBuildDate>Sat, 28 Dec 2024 10:14:48 +0800</lastBuildDate>
-    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Dec 2024 12:43:47 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Cli</title>
-      <link>/tags/cli/</link>
-      <pubDate>Sat, 28 Dec 2024 10:14:48 +0800</pubDate>
-      <guid>/tags/cli/</guid>
+      <title>Rust</title>
+      <link>//localhost:1313/tags/rust/</link>
+      <pubDate>Sat, 28 Dec 2024 12:43:47 +0800</pubDate>
+      <guid>//localhost:1313/tags/rust/</guid>
       <description></description>
     </item>
     <item>
-      <title>Rust</title>
-      <link>/tags/rust/</link>
+      <title>并发</title>
+      <link>//localhost:1313/tags/%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sat, 28 Dec 2024 12:43:47 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%B9%B6%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cli</title>
+      <link>//localhost:1313/tags/cli/</link>
       <pubDate>Sat, 28 Dec 2024 10:14:48 +0800</pubDate>
-      <guid>/tags/rust/</guid>
+      <guid>//localhost:1313/tags/cli/</guid>
       <description></description>
     </item>
   </channel>
