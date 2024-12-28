@@ -2,7 +2,7 @@
 
 &lt;div class="component-content pagebody component">
  &lt;h2 id="第一章异步简介" class="pagebody-header">
- &lt;strong>第一章：异步简介&lt;/strong>
+ 第一章：异步简介
  &lt;/h2>
 &lt;/div>&lt;p>本章主要介绍了异步编程的概念以及在Rust中的应用。&lt;/p></description></item><item><title>Rust Atomics and Locks</title><link>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</link><pubDate>Sat, 28 Dec 2024 12:43:47 +0800</pubDate><guid>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</guid><description>&lt;p>&lt;strong>前言&lt;/strong>&lt;/p>
 &lt;ul>

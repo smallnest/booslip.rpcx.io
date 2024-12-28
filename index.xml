@@ -2,7 +2,7 @@
 
 &lt;div class="component-content pagebody component">
  &lt;h2 id="第一章异步简介" class="pagebody-header">
- &lt;strong>第一章：异步简介&lt;/strong>
+ 第一章：异步简介
  &lt;/h2>
 &lt;/div>&lt;p>本章主要介绍了异步编程的概念以及在Rust中的应用。&lt;/p></description></item><item><title>Effective Rust</title><link>https://booslip.rpcx.io/posts/effective-rust/</link><pubDate>Sat, 28 Dec 2024 18:42:32 +0800</pubDate><guid>https://booslip.rpcx.io/posts/effective-rust/</guid><description>&lt;div class="component-content pagebody component">
  &lt;h2 id="第一章类型types" class="pagebody-header">
