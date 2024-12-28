@@ -5414,7 +5414,7 @@ html.no-touch.no-reduced-motion .tile.tile-list[data-focus-method=key] .media--v
 
 .component {
   margin-top: 10px;
-  margin-bottom: 44px
+  /* margin-bottom: 44px */
 }
 
 @media only screen and (max-width: 1068px) {
