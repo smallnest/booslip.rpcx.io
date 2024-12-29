@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 竹简书摘</title><link>https://booslip.rpcx.io/posts/</link><description>Recent content in Posts on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Sat, 28 Dec 2024 19:09:04 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Idiomatic Rust</title><link>https://booslip.rpcx.io/posts/idiomatic-rust/</link><pubDate>Sat, 28 Dec 2024 19:09:04 +0800</pubDate><guid>https://booslip.rpcx.io/posts/idiomatic-rust/</guid><description>&lt;p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。&lt;/p></description></item><item><title>Async Rust</title><link>https://booslip.rpcx.io/posts/async-rust/</link><pubDate>Sat, 28 Dec 2024 18:58:34 +0800</pubDate><guid>https://booslip.rpcx.io/posts/async-rust/</guid><description>&lt;p>好的，我将按照您的要求，对每个章节的内容进行总结，并尽可能地包含关键代码，使其内容详实且易于理解。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 竹简书摘</title><link>https://booslip.rpcx.io/posts/</link><description>Recent content in Posts on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Sun, 29 Dec 2024 16:48:43 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Patterns of Distributed Systems</title><link>https://booslip.rpcx.io/posts/patterns-of-distributed-systems/</link><pubDate>Sun, 29 Dec 2024 16:48:43 +0800</pubDate><guid>https://booslip.rpcx.io/posts/patterns-of-distributed-systems/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一部分导论与概述" class="pagebody-header">
+ 第一部分：导论与概述
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>导论&lt;/strong>：本书的核心概念是将复杂的分布式系统抽象成可复用的模式。通过命名组件、描述行为和交互方式，构建了一个分布式系统的模式语言，使系统可以被视为可组合的“乐高积木”。 这有助于避免在讨论分布式系统时因术语歧义而产生的误解。&lt;/li>
+&lt;li>&lt;strong>概述&lt;/strong>：分布式系统的基本构建块包括数据分区和复制。本书首先关注数据复制，然后介绍分区。一个简单的示例数据记录被复制到多个节点，展示了分布式系统中数据一致性的挑战。例如，如果一个节点在更新数据过程中崩溃，会导致数据不一致。 使用&lt;strong>领导者（Leader）模式&lt;/strong>可以解决这个问题，由一个领导者节点处理所有更新请求。 当领导者失效时，需要通过&lt;strong>心跳（Heartbeat）机制&lt;/strong>来检测，并选举新的领导者。 &lt;strong>高水位标记（High-Water Mark）&lt;/strong> 用于确保所有节点在领导者切换后保持数据一致性。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二部分数据复制模式" class="pagebody-header">
+ 第二部分：数据复制模式
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>写前日志（Write-Ahead Log, WAL）&lt;/strong>：&lt;/p></description></item><item><title>Idiomatic Rust</title><link>https://booslip.rpcx.io/posts/idiomatic-rust/</link><pubDate>Sat, 28 Dec 2024 19:09:04 +0800</pubDate><guid>https://booslip.rpcx.io/posts/idiomatic-rust/</guid><description>&lt;p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。&lt;/p></description></item><item><title>Async Rust</title><link>https://booslip.rpcx.io/posts/async-rust/</link><pubDate>Sat, 28 Dec 2024 18:58:34 +0800</pubDate><guid>https://booslip.rpcx.io/posts/async-rust/</guid><description>&lt;p>好的，我将按照您的要求，对每个章节的内容进行总结，并尽可能地包含关键代码，使其内容详实且易于理解。&lt;/p>
 
 &lt;div class="component-content pagebody component">
  &lt;h2 id="第一章异步简介" class="pagebody-header">
