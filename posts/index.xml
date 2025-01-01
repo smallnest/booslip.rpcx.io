@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 竹简书摘</title><link>https://booslip.rpcx.io/posts/</link><description>Recent content in Posts on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Wed, 01 Jan 2025 09:34:21 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Learn Rust in a Month of Lunches</title><link>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</link><pubDate>Wed, 01 Jan 2025 09:34:21 +0800</pubDate><guid>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</guid><description>&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 竹简书摘</title><link>https://booslip.rpcx.io/posts/</link><description>Recent content in Posts on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Wed, 01 Jan 2025 10:09:38 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Learn Concurrent Programming With Go</title><link>https://booslip.rpcx.io/posts/learn-concurrent-programming-with-go/</link><pubDate>Wed, 01 Jan 2025 10:09:38 +0800</pubDate><guid>https://booslip.rpcx.io/posts/learn-concurrent-programming-with-go/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>第一章：步入并发编程&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>并发（Concurrency）&lt;/strong> 是一种程序代码的属性，它将指令分组为独立的任务，并规划任务之间的边界和同步点。并发存在于我们日常生活和工作中，例如多人同时在线购物或汽车行驶。&lt;/li>
+&lt;li>&lt;strong>并行（Parallelism）&lt;/strong> 是程序执行的属性，它指同时执行多个任务。并行是并发的子集，只有并发程序才能并行执行。&lt;/li>
+&lt;li>&lt;strong>Go 语言&lt;/strong> 在设计时就考虑了高性能的并发，因此是学习并发编程的理想选择。Go 使用 &lt;strong>goroutine&lt;/strong> 作为基本的并发执行单元，它是一种轻量级的用户级线程，由 Go 的运行时管理。&lt;/li>
+&lt;li>Go 提供了两种并发模型：&lt;strong>通信顺序进程（CSP）&lt;/strong> 模型和传统的 &lt;strong>内存共享&lt;/strong> 模型。CSP 模型通过消息传递进行通信，而内存共享模型使用互斥锁和条件变量等原语进行同步。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二章：处理线程&lt;/strong>&lt;/p></description></item><item><title>Learn Rust in a Month of Lunches</title><link>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</link><pubDate>Wed, 01 Jan 2025 09:34:21 +0800</pubDate><guid>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</guid><description>&lt;ul>
 &lt;li>
 &lt;p>&lt;strong>第一章：Rust 基础入门&lt;/strong>&lt;/p>
 &lt;ul>
