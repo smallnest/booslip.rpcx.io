@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rust on 竹简书摘</title><link>https://booslip.rpcx.io/tags/rust/</link><description>Recent content in Rust on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Sat, 28 Dec 2024 19:09:04 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/tags/rust/index.xml" rel="self" type="application/rss+xml"/><item><title>Idiomatic Rust</title><link>https://booslip.rpcx.io/posts/idiomatic-rust/</link><pubDate>Sat, 28 Dec 2024 19:09:04 +0800</pubDate><guid>https://booslip.rpcx.io/posts/idiomatic-rust/</guid><description>&lt;p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。&lt;/p></description></item><item><title>Async Rust</title><link>https://booslip.rpcx.io/posts/async-rust/</link><pubDate>Sat, 28 Dec 2024 18:58:34 +0800</pubDate><guid>https://booslip.rpcx.io/posts/async-rust/</guid><description>&lt;p>好的，我将按照您的要求，对每个章节的内容进行总结，并尽可能地包含关键代码，使其内容详实且易于理解。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rust on 竹简书摘</title><link>https://booslip.rpcx.io/tags/rust/</link><description>Recent content in Rust on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Wed, 01 Jan 2025 09:34:21 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/tags/rust/index.xml" rel="self" type="application/rss+xml"/><item><title>Learn Rust in a Month of Lunches</title><link>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</link><pubDate>Wed, 01 Jan 2025 09:34:21 +0800</pubDate><guid>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>第一章：Rust 基础入门&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>核心概念：&lt;/strong> 本章主要介绍了 Rust 的基本语法和概念，包括变量声明、代码块、打印输出、类型转换和字符串。&lt;/li>
+&lt;li>&lt;strong>变量与代码块：&lt;/strong>
+&lt;ul>
+&lt;li>使用 &lt;code>let&lt;/code> 关键字声明变量，代码块用 &lt;code>{}&lt;/code> 表示。变量的作用域（lifetime）限制在代码块内部。&lt;/li>
+&lt;li>&lt;strong>Shadowing&lt;/strong> (遮蔽) 是指用新的 &lt;code>let&lt;/code> 绑定同名变量，使之前的变量失效。&lt;/li>
+&lt;li>变量的类型通常由 Rust 自动推断，但可以使用 &lt;code>as&lt;/code> 关键字进行显式类型转换。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>打印输出:&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>println!&lt;/code> 宏用于打印输出，&lt;code>{}&lt;/code> 用来捕获变量的值。&lt;code>{:?}&lt;/code> 用于调试输出，&lt;code>{:#?}&lt;/code> 用于更美观的调试输出，可以分行显示结构体等复杂类型的内容。&lt;/li>
+&lt;li>&lt;code>print!&lt;/code> 宏与 &lt;code>println!&lt;/code> 类似，但不添加换行符。&lt;/li>
+&lt;li>可以使用 &lt;code>r#&amp;quot;&amp;quot;#&lt;/code> 来创建原始字符串，避免转义字符的麻烦。&lt;/li>
+&lt;li>在字符串前加 &lt;code>b&lt;/code> 可以打印字符串的字节表示。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>字符串类型：&lt;/strong> &lt;code>&amp;amp;str&lt;/code> 是一种字符串切片类型，后续章节会详细介绍。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二章：内存、变量与所有权&lt;/strong>&lt;/p></description></item><item><title>Idiomatic Rust</title><link>https://booslip.rpcx.io/posts/idiomatic-rust/</link><pubDate>Sat, 28 Dec 2024 19:09:04 +0800</pubDate><guid>https://booslip.rpcx.io/posts/idiomatic-rust/</guid><description>&lt;p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。&lt;/p></description></item><item><title>Async Rust</title><link>https://booslip.rpcx.io/posts/async-rust/</link><pubDate>Sat, 28 Dec 2024 18:58:34 +0800</pubDate><guid>https://booslip.rpcx.io/posts/async-rust/</guid><description>&lt;p>好的，我将按照您的要求，对每个章节的内容进行总结，并尽可能地包含关键代码，使其内容详实且易于理解。&lt;/p>
 
 &lt;div class="component-content pagebody component">
  &lt;h2 id="第一章异步简介" class="pagebody-header">
