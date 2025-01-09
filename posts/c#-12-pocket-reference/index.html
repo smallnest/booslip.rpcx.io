@@ -1,0 +1,112 @@
+<!doctype html><html class="js no-touch progressive-image no-reduced-motion progressive" lang=zh-hans><head><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta http-equiv=X-UA-Compatible content="IE=edge"><link rel=icon href=/img/favicon.ico><meta name=keyword content><meta property="og:url" content="https://booslip.rpcx.io/posts/c%23-12-pocket-reference/"><meta property="og:site_name" content="竹简书摘"><meta property="og:title" content="C# 12 Pocket Reference"><meta property="og:description" content="C# 12 口袋书"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-01-09T19:05:16+08:00"><meta property="article:modified_time" content="2025-01-09T19:05:16+08:00"><meta property="article:tag" content="Dotnet"><meta property="article:tag" content="C#"><title>C# 12 Pocket Reference</title>
+<link rel=canonical href=/posts/c%23-12-pocket-reference/><link rel=stylesheet href=/css/global.css><link rel=stylesheet href=/css/custom.css><link rel=stylesheet href=/css/search.css><link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel=stylesheet><script>var _hmt=_hmt||[];(function(){var e,t=document.createElement("script");t.src="https://hm.baidu.com/hm.js?c80136b2ed102610dcafb84941e8df30",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(t,e)})()</script></head></head><body class=page-article><header><nav class=nav><div class=nav-wrapper><div class=nav-content-wrapper><div class=nav-content><a href=/ class=nav-title>竹简书摘</a><div class=nav-menu><div class=nav-item-wrapper><a href=/posts class=nav-item-content>书摘</a></div><div class=nav-item-wrapper><a href=/index.xml class=nav-item-content target=_blank>RSS</a></div></div></div></div></div></nav><script>function toggleSearchModal(){const t=`
+    <div class="modal-body">
+      <div id="autocomplete" onclick="event.stopPropagation();"></div>
+    </div>
+    `,e=document.querySelector("#modal-wrapper");if(e)document.body.removeAttribute("style"),document.body.removeChild(e);else{const e=document.createElement("div");document.body.setAttribute("style","overflow: hidden;"),e.setAttribute("id","modal-wrapper"),e.setAttribute("onclick","toggleSearchModal()"),e.innerHTML=t;const n=document.createElement("script");n.setAttribute("src","https://booslip.rpcx.io/js/algolia.js"),e.appendChild(n),document.body.append(e)}}</script></header><main id=main class=main><section><article class=article><div class=article-header><div class="category component"><div class=component-content><div class=category-eyebrow><span class="category-eyebrow__category category_original">dotnet
+</span><span class=category-eyebrow__date>2025年1月9日</span></div></div></div><div class="pagetitle component"><div class=component-content><h1 class=hero-headline>C# 12 Pocket Reference</h1></div></div><div class="component article-subhead"><div class=component-content>C# 12 口袋书</div></div><div class="tagssheet component"><div class=component-content><a href=/tags/dotnet class=tag>dotnet
+</a><a href=/tags/c class=tag>c#</a></div></div></div><div class="book-card component"><div class=book-cover><img data-src=/covers/CSharp-12-Pocket-Reference.jpg alt=书籍封面></div><div class=book-info><h1 class=book-title>C# 12 Pocket Reference</h1><div class=book-meta><span>作者：Joseph Albahari, Ben Albahari</span>
+<span>出版日期：2023-12-05</span>
+<span>出版社：O'Reilly Media</span></div><div class=book-description>本书涵盖了C# 12语言的基础知识和新特性，以及高级主题，例如运算符重载、泛型、LINQ、异步函数和指针等。书中包含大量的代码示例和详细的语法解释，并附有目录和索引方便读者查找。此外，节选还包含了关于C#语言特性的详细说明，例如值类型与引用类型、委托、异常处理、以及模式匹配等。最后，还介绍了如何使用C#编写XML文档和利用预处理器指令进行条件编译。</div></div></div><div class=pagebody><p class="component-content component">这本书旨在为 C# 12 程序员提供快速参考。以下是各章节的知识点概要：</p><div class="component-content pagebody component"><h2 id=第一章c-初体验 class=pagebody-header><strong>第一章：C# 初体验</strong></h2></div><pre><code>*   介绍了第一个 C# 程序，展示了如何进行简单的乘法运算并将结果输出到屏幕。
+*   解释了 C# 程序由语句组成，语句以分号结尾，并按顺序执行。
+*   提到了 C# 中的不同类型的函数，如方法和运算符。
+</code></pre><div class="component-content pagebody component"><h2 id=第二章语法 class=pagebody-header><strong>第二章：语法</strong></h2></div><pre><code>*   介绍了 C# 的基本语法元素，包括标识符和关键字。
+*   标识符是程序员为类、方法、变量等选择的名称，必须以字母或下划线开头。C# 标识符区分大小写。
+*   关键字是 C# 语言中预定义的保留字，例如 `using`，`int` 等。
+*   介绍了上下文关键字，它们可以在特定上下文中使用，而无需 `@` 前缀。
+*   解释了字面值、标点符号和运算符的概念。
+*   描述了 C# 中单行和多行注释的使用方法。
+</code></pre><div class="component-content pagebody component"><h2 id=第三章类型基础 class=pagebody-header><strong>第三章：类型基础</strong></h2></div><pre><code>*   介绍了 C# 中的基本类型，包括 **`int`**，**`string`** 和 **`bool`**。
+*   **`int`** 类型表示 32 位整数。
+*   **`string`** 类型表示字符序列。
+*   **`bool`** 类型表示布尔值 `true` 或 `false`。
+*   阐述了如何创建自定义类型，并通过一个 `UnitConverter` 类来说明。
+*   解释了 **`public`** 关键字的作用，它用于暴露类的成员给外部访问。
+*   还讲解了 C# 中程序结构的组织，如 `using` 指令，语句和方法声明，类型和命名空间声明，以及顶级语句。
+</code></pre><div class="component-content pagebody component"><h2 id=第四章数值类型 class=pagebody-header><strong>第四章：数值类型</strong></h2></div><pre><code>*   详细介绍了 C# 中预定义的数值类型，包括有符号和无符号整数、浮点数和十进制数。
+*   提到了不同数值类型的范围和大小，以及它们在 .NET 中的对应类型。
+*  **`int`** 和 **`long`** 是最常用的整数类型，而 **`float`** 和 **`double`** 则用于科学和图形计算，**`decimal`** 用于金融计算。
+*   介绍了数值字面值的表示方式，包括十进制、十六进制和二进制，以及如何使用下划线提高可读性。
+*   讲解了算术运算符，包括 `+`、`-`、`*`、`/` 和 `%`。
+*   解释了增量和减量运算符 (`++` 和 `--`) 的用法。
+*   讨论了整数除法和溢出问题，以及如何使用 `checked` 和 `unchecked` 运算符来处理溢出。
+*   介绍了位运算符，包括 `~`、`&amp;`、`|`、`^`、`&lt;&lt;` 和 `&gt;&gt;`。
+*   讲解了 8 位和 16 位整数类型，以及它们与较大整数类型之间的隐式转换。
+*   解释了浮点数类型的特殊值，如 `NaN`、`+∞`、`-∞` 和 `-0`，以及如何使用 `float.IsNaN` 或 `double.IsNaN` 方法来测试一个值是否为 `NaN`.
+</code></pre><div class="component-content pagebody component"><h2 id=第五章布尔类型和运算符 class=pagebody-header><strong>第五章：布尔类型和运算符</strong></h2></div><pre><code>*   详细介绍了 `bool` 类型，它表示逻辑值 `true` 或 `false`。
+*   解释了相等和比较运算符 (`==`、`!=`、`&lt;`、`&gt;`、`&lt;=` 和 `&gt;=`) 的用法，以及它们如何应用于值类型和引用类型。
+*   讨论了条件运算符 (`&amp;&amp;`、`||` 和 `!`) 的使用，以及短路求值的概念。
+*   介绍了三元条件运算符 (`? :`) 的用法。
+</code></pre><div class="component-content pagebody component"><h2 id=第六章字符串和字符 class=pagebody-header><strong>第六章：字符串和字符</strong></h2></div><pre><code>*   介绍了 `char` 类型，它表示一个 Unicode 字符。
+*   讲解了转义序列，用于表示不能直接表示的字符。
+*   详细介绍了 `string` 类型，它表示一个不可变的 Unicode 字符序列。
+*   讨论了字符串字面值的表示方法，包括普通字符串、逐字字符串和原始字符串。
+*   介绍了字符串的连接、插值和比较方法，以及如何使用 `StringBuilder` 类型进行高效的字符串操作。
+</code></pre><div class="component-content component"><ul><li>讲解了原始字符串字面量的特殊规则，包括如何表示多行字符串，如何处理前导和尾随空格，以及如何进行插值。
+* 介绍了字符串的比较，可以使用 <code>CompareTo</code> 方法，以及如何搜索字符串内的字符和子字符串。
+* 介绍了 UTF-8 字符串的使用方式。
+* 解释了范围（Ranges）的概念，并提供了使用 <code>..</code> 运算符和 <code>^</code> 符号进行数组切片的例子。</li></ul></div><div class="component-content pagebody component"><h2 id=第七章变量和参数 class=pagebody-header><strong>第七章：变量和参数</strong></h2></div><pre><code>*   解释了变量的概念，以及变量在栈和堆中的存储。
+*   讲解了如何使用 `ref` 修饰符通过引用传递参数，并举例说明。
+*   介绍了可选参数和默认参数值，以及它们在编译时的处理方式。
+</code></pre><div class="component-content pagebody component"><h2 id=第八章表达式和运算符 class=pagebody-header><strong>第八章：表达式和运算符</strong></h2></div><pre><code>*   详细介绍了 C# 中的各种运算符，包括一元运算符、二元运算符和三元运算符。
+*   列出了 C# 中运算符的优先级表，并解释了运算符的结合性。
+</code></pre><div class="component-content component"><ul><li>详细介绍了 C# 中运算符的种类，包括 primary, unary, multiplicative, additive, shift, relational, equality, bitwise, conditional, null coalescing, conditional(ternary), assignment, and lambda operators.</li></ul></div><div class="component-content pagebody component"><h2 id=第九章空运算符 class=pagebody-header><strong>第九章：空运算符</strong></h2></div><pre><code>*   介绍了 C# 中用于处理 null 值的三个运算符：null 合并运算符 (`??`)、null 条件运算符 (`?.`) 和 null 合并赋值运算符 (`??=`)。
+*   解释了 `??` 运算符的作用，即如果左侧操作数非 null，则返回左侧操作数，否则返回右侧操作数。
+</code></pre><div class="component-content component"><ul><li><p class="component-content component">解释了 <code>?.</code> 运算符的作用，即如果左侧操作数是 null，则表达式返回 null，否则执行方法或成员访问。</p></li><li><p class="component-content component">解释了 <code>??=</code> 运算符的作用，如果左侧操作数是 null，则将右侧操作数的值赋值给左侧的操作数.</p></li><li><p class="component-content component"><strong>第十章：语句</strong></p><div class="component-content component"><ul><li>解释了语句的概念，以及语句如何按顺序执行，以及语句块 <code>{}</code> 的概念.</li><li>讲解了变量声明语句，常量声明语句，以及局部变量的作用域.</li><li>介绍了表达式语句，以及什么样的表达式可以作为语句.</li><li>讲解了 if 语句, else 语句, switch 语句.</li><li>介绍了 for 循环, foreach 循环.</li><li>解释了 <code>return</code> 语句的作用，即从方法中返回值。</li></ul></div></li><li><p class="component-content component"><strong>第十一章：命名空间</strong></p><div class="component-content component"><ul><li>阐述了命名空间的概念，以及如何使用命名空间来组织类型并避免命名冲突。</li><li>讨论了命名空间与程序集之间的关系。</li><li>解释了如何使用 <code>namespace</code> 关键字定义命名空间，以及如何使用完全限定名称来引用类型。</li><li>阐述了全局命名空间的概念。</li><li>介绍了 <code>using</code> 指令以及全局 using 指令</li></ul></div></li></ul></div><div class="component-content pagebody component"><h2 id=第十二章类 class=pagebody-header><strong>第十二章：类</strong></h2></div><pre><code>*   介绍了类的基本概念，包括成员、构造函数、常量和方法。
+ *   解释了表达式主体方法, 构造函数，和析构函数.
+*   讨论了如何使用 `this` 引用来访问实例本身。
+</code></pre><div class="component-content component"><ul><li>介绍了属性（properties）的概念和实现方式，以及如何使用访问器（get 和 set）来控制属性的读取和写入.</li><li>解释了表达式主体属性
+* 讨论了只读属性，和 Init-only 设置器.
+* 介绍了索引器的概念和实现方式.
+* 讨论了如何验证主构造函数参数， 以及如何使用 finalizers 回收无用对象.</li><li>解释了 extended partial methods.</li><li>介绍了 <code>nameof</code> 运算符.</li></ul></div><div class="component-content pagebody component"><h2 id=第十三章继承 class=pagebody-header><strong>第十三章：继承</strong></h2></div><pre><code>*   介绍了继承的概念，以及如何使用继承来实现代码重用和多态性。
+*   解释了如何使用 `base` 关键字来调用基类的构造函数和成员。
+*  解释了 `new` 关键字的用法，它可以用来隐藏继承的成员.
+</code></pre><div class="component-content component"><ul><li>讨论了<code>required</code> 关键字， 以及构造函数和字段的初始化顺序.</li></ul></div><div class="component-content pagebody component"><h2 id=第十四章object-类型 class=pagebody-header><strong>第十四章：<code>object</code> 类型</strong></h2></div><pre><code>*   解释了 `object` 类型是所有类型的最终基类，任何类型都可以隐式地转换为 `object`。
+*   展示了如何使用 `object` 类型来实现一个简单的栈。
+*  讨论了 `object` 的基本方法如 `GetType`.
+</code></pre><div class="component-content component"><ul><li>讨论了 <code>default</code> 关键字的用法，它用于创建类型的默认值.</li></ul></div><div class="component-content pagebody component"><h2 id=第十五章结构体 class=pagebody-header><strong>第十五章：结构体</strong></h2></div><pre><code>* 介绍了结构体 (`struct`) 的概念，与类不同，它是值类型。
+* 结构体是轻量级的，不能继承，默认情况下提供结构相等性.
+</code></pre><div class="component-content pagebody component"><h2 id=第十六章访问修饰符 class=pagebody-header><strong>第十六章：访问修饰符</strong></h2></div><pre><code>*   解释了 C# 中的各种访问修饰符，包括 `public`、`private`、`protected` 和 `internal`，以及它们如何控制类型的成员的访问性。
+</code></pre><div class="component-content component"><ul><li>讨论了 friend assemblies 和 accessibility capping 的概念.</li></ul></div><div class="component-content pagebody component"><h2 id=第十七章接口 class=pagebody-header><strong>第十七章：接口</strong></h2></div><pre><code>*   介绍了接口 (`interface`) 的概念，以及如何使用接口来实现多态性。
+</code></pre><div class="component-content component"><ul><li><p class="component-content component">讨论了接口成员的特点， 以及如何显式实现接口.</p></li><li><p class="component-content component">介绍了接口中的默认方法.</p></li><li><p class="component-content component"><strong>第十八章：枚举</strong></p><div class="component-content component"><ul><li>介绍了枚举 (<code>enum</code>) 的概念，以及如何使用枚举来定义一组命名的常量.</li><li>讨论了 <code>Flags</code> attribute， 以及如何使用位运算符来操作枚举值.</li></ul></div></li></ul></div><div class="component-content pagebody component"><h2 id=第十九章泛型 class=pagebody-header><strong>第十九章：泛型</strong></h2></div><pre><code>*   介绍了泛型的概念，以及如何使用泛型来创建可重用的类型和方法。
+*   讨论了泛型类型参数的约束，以及如何在泛型中使用默认值。
+*   解释了协变和逆变的概念，以及它们在泛型接口和委托中的应用。
+</code></pre><div class="component-content component"><ul><li><strong>第二十章：委托</strong></li><li>介绍了委托 (<code>delegate</code>) 的概念，以及如何使用委托来实现回调和事件。</li><li>讨论了委托的组合，以及多播委托的概念.</li><li>解释了 Action 和 Func 委托，以及委托的逆变和协变.</li></ul></div><div class="component-content pagebody component"><h2 id=第二十一章事件 class=pagebody-header><strong>第二十一章：事件</strong></h2></div><pre><code>*   介绍了事件 (`event`) 的概念，以及如何使用事件来实现发布/订阅模式。
+*   讲解了事件的声明和使用方法，以及如何通过访问器来控制事件的行为。
+</code></pre><div class="component-content pagebody component"><h2 id=第二十二章lambda-表达式 class=pagebody-header><strong>第二十二章：Lambda 表达式</strong></h2></div><pre><code>*   介绍了 Lambda 表达式的概念，以及如何使用 Lambda 表达式来创建匿名函数。
+*   解释了如何捕获外部变量，以及 Lambda 表达式中的参数和默认参数.
+</code></pre><div class="component-content component"><ul><li>讨论了匿名方法和 Lambda 表达式的联系，以及它们如何捕获外部变量.</li></ul></div><div class="component-content pagebody component"><h2 id=第二十三章try-语句和异常 class=pagebody-header><strong>第二十三章：<code>try</code> 语句和异常</strong></h2></div><pre><code>*   介绍了 `try` 语句和异常处理的概念，以及如何使用 `try`、`catch` 和 `finally` 块来处理运行时错误。
+*   讨论了如何使用 `catch` 块来捕获特定类型的异常，以及如何使用 `finally` 块来执行清理代码。
+*   解释了异常过滤器， 以及如何使用 `using` 语句和声明来简化资源管理.
+</code></pre><div class="component-content pagebody component"><h2 id=第二十四章迭代器 class=pagebody-header><strong>第二十四章：迭代器</strong></h2></div><pre><code>*  解释了迭代器的概念，以及 `foreach` 语句如何使用迭代器来遍历集合.
+*  讨论了如何使用 `yield` 关键字来创建迭代器方法.
+</code></pre><div class="component-content pagebody component"><h2 id=第二十五章可空值类型 class=pagebody-header><strong>第二十五章：可空值类型</strong></h2></div><pre><code>*   介绍了可空值类型的概念，以及如何使用 `?` 符号来表示可空值类型。
+*   讨论了 `Nullable&lt;T&gt;` 结构体，以及可空值类型上的运算符提升。
+*   解释了可空值类型与 null 合并运算符的配合使用。
+</code></pre><div class="component-content pagebody component"><h2 id=第二十六章可空引用类型 class=pagebody-header><strong>第二十六章：可空引用类型</strong></h2></div><pre><code>*  介绍了可空引用类型，以及如何使用 `#nullable` 指令控制可空引用的行为.
+*  讨论了 null forgiving operator (`!`)，以及编译器如何警告你未初始化或可能出现 null 异常的代码.
+</code></pre><div class="component-content pagebody component"><h2 id=第二十七章扩展方法 class=pagebody-header><strong>第二十七章：扩展方法</strong></h2></div><pre><code>*   介绍了扩展方法的概念，以及如何使用扩展方法来向现有类型添加新功能。
+*   讨论了扩展方法的调用方式，以及扩展方法与实例方法之间的优先级关系。
+</code></pre><div class="component-content component"><ul><li><strong>第二十八章：匿名类型</strong><div class="component-content component"><ul><li>介绍了匿名类型的概念，以及如何使用匿名类型来创建一个简单的类存储一组值.</li></ul></div></li></ul></div><div class="component-content pagebody component"><h2 id=第二十九章记录 class=pagebody-header><strong>第二十九章：记录</strong></h2></div><pre><code>*   介绍了记录 (`record`) 的概念，以及记录与类的区别。
+*   讨论了记录的属性、构造函数、析构函数、相等性和继承。
+*   解释了 Primary Constructor 的概念.
+</code></pre><div class="component-content pagebody component"><h2 id=第三十章模式匹配 class=pagebody-header><strong>第三十章：模式匹配</strong></h2></div><pre><code>*   介绍了 C# 中的模式匹配，包括常数模式、类型模式、元组模式和属性模式 。
+</code></pre><div class="component-content component"><ul><li>解释了列表模式 .</li></ul></div><div class="component-content pagebody component"><h2 id=第三十一章linq class=pagebody-header><strong>第三十一章：LINQ</strong></h2></div><pre><code>*  介绍了 LINQ 的概念，以及如何使用 LINQ 来查询数据集合 。
+*   讨论了 LINQ 中的各种标准查询运算符，如过滤、投影、排序、分组、连接和聚合等 。
+*   解释了 LINQ 的延迟执行，以及如何使用 `ToArray` 和 `ToList` 等方法来强制执行查询 。
+*   讨论了 LINQ 中的查询表达式语法，以及如何使用 `from`、`where`、`select` 和 `orderby` 等关键字来构建查询 。
+*   介绍了 `let` 关键字的用法 
+*    解释了 `Zip` joining operator .
+</code></pre><div class="component-content pagebody component"><h2 id=第三十二章运算符重载 class=pagebody-header><strong>第三十二章：运算符重载</strong></h2></div><pre><code>*  介绍了运算符重载的概念，以及如何使用 `operator` 关键字来重载运算符 .
+*  讨论了如何重载各种运算符，如算术运算符、比较运算符和转换运算符 .
+* 讲解了 checked operator.
+</code></pre><div class="component-content pagebody component"><h2 id=第三十三章特性 class=pagebody-header><strong>第三十三章：特性</strong></h2></div><pre><code>*  介绍了特性的概念，以及如何使用特性来添加元数据到类型和成员 .
+*   讨论了如何定义和使用特性，包括位置参数和命名参数 .
+*   解释了如何指定多个特性，以及如何将特性应用于不同的代码元素 .
+*   介绍了调用者信息特性，如 `CallerMemberName` 和 `CallerLineNumber` .
+</code></pre><div class="component-content pagebody component"><h2 id=第三十四章异步函数 class=pagebody-header><strong>第三十四章：异步函数</strong></h2></div><pre><code>*   介绍了异步函数的概念，以及如何使用 `async` 和 `await` 关键字来编写异步代码 。
+*   讨论了 `Task` 和 `Task&lt;T&gt;` 类型的用法，以及如何使用 `WhenAll` 和 `WhenAny` 方法来处理多个异步操作 。
+*  解释了 `IAsyncDisposable` 接口，以及异步流的用法.
+</code></pre><div class="component-content component"><ul><li><p class="component-content component"><strong>第三十五章：不安全的代码和指针</strong></p><div class="component-content component"><ul><li>介绍了不安全代码和指针的概念，以及如何使用指针进行直接的内存操作 .</li><li>讨论了指针类型，指针运算符，以及如何使用 <code>unsafe</code> 关键字来标记不安全的代码块 .</li></ul></div></li><li><p class="component-content component"><strong>第三十六章：预处理器指令</strong></p><div class="component-content component"><ul><li>介绍了预处理器指令的概念，以及如何在代码中使用预处理器指令来进行条件编译 .</li><li>讨论了各种预处理器指令，如 <code>#if</code>， <code>#elif</code>, <code>#else</code>, <code>#endif</code>, <code>#warning</code>, <code>#error</code>, <code>#line</code>, <code>#region</code>, 和 <code>#pragma</code> .</li></ul></div></li><li><p class="component-content component">讲解了 pragma warning 指令，它用于禁用或启用编译器警告 .</p></li></ul></div><div class="component-content pagebody component"><h2 id=第三十七章xml-文档 class=pagebody-header><strong>第三十七章：XML 文档</strong></h2></div><pre><code>*   介绍了 XML 文档的概念，以及如何使用 XML 注释来为代码生成文档 。
+*   讨论了各种 XML 文档标签，如 `&lt;summary&gt;`、`&lt;param&gt;`、`&lt;returns&gt;` 和 `&lt;exception&gt;` 等 。
+</code></pre><div class="component-content component"><ul><li><strong>索引</strong><div class="component-content component"><ul><li>提供了本书中使用的各种符号和术语的索引，方便读者快速查找相关信息 。</li></ul></div></li></ul></div><p class="component-content component">总的来说，这本书深入浅出地介绍了 C# 12 的各种特性和功能，从基本语法到高级主题，涵盖了 C# 开发的各个方面，是一本非常实用的参考手册。</p></div><div id=comments class=utterances><script src=https://utteranc.es/client.js repo=smallnest/booslip.rpcx.io issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></article></section></main><script>var script=document.createElement("script");script.src="https://booslip.rpcx.io/js/initPost.js",document.head.appendChild(script)</script><div class=footer-main><div class="content-body footer-wraper"><div class=footer-box><div class=foot-nav><div class=foot-nav-items><div class=item><div class=logo></div><div class=email>Email: <a href=mailto:smallnest@gmail.com>smallnest@gmail.com</a></div></div><div class="item community"><div class=item-title>社交媒体</div><a href=https://github.com/smallnest target=_blank>Github</a></div><div class="item resources"><div class=item-title>友链</div><a href=https://colobu.com/ target=_blank>鸟窝</a></div></div></div><div class=bottom><div class="item copyright">鸟窝 &copy; 2025 All Rights Reserved.</div></div></div></div></div></body></html>

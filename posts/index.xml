@@ -1,4 +1,366 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 竹简书摘</title><link>https://booslip.rpcx.io/posts/</link><description>Recent content in Posts on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Thu, 09 Jan 2025 18:38:26 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Head First Software Architecture</title><link>https://booslip.rpcx.io/posts/head-first-software-architecture/</link><pubDate>Thu, 09 Jan 2025 18:38:26 +0800</pubDate><guid>https://booslip.rpcx.io/posts/head-first-software-architecture/</guid><description>&lt;p>好的，我将根据提供的资料，按照章节总结知识点，并用中文回复，力求做到信、雅、达。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 竹简书摘</title><link>https://booslip.rpcx.io/posts/</link><description>Recent content in Posts on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Thu, 09 Jan 2025 19:05:16 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>C# 12 Pocket Reference</title><link>https://booslip.rpcx.io/posts/c%23-12-pocket-reference/</link><pubDate>Thu, 09 Jan 2025 19:05:16 +0800</pubDate><guid>https://booslip.rpcx.io/posts/c%23-12-pocket-reference/</guid><description>&lt;p>这本书旨在为 C# 12 程序员提供快速参考。以下是各章节的知识点概要：&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章c-初体验" class="pagebody-header">
+ &lt;strong>第一章：C# 初体验&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了第一个 C# 程序，展示了如何进行简单的乘法运算并将结果输出到屏幕。
+* 解释了 C# 程序由语句组成，语句以分号结尾，并按顺序执行。
+* 提到了 C# 中的不同类型的函数，如方法和运算符。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二章语法" class="pagebody-header">
+ &lt;strong>第二章：语法&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 C# 的基本语法元素，包括标识符和关键字。
+* 标识符是程序员为类、方法、变量等选择的名称，必须以字母或下划线开头。C# 标识符区分大小写。
+* 关键字是 C# 语言中预定义的保留字，例如 `using`，`int` 等。
+* 介绍了上下文关键字，它们可以在特定上下文中使用，而无需 `@` 前缀。
+* 解释了字面值、标点符号和运算符的概念。
+* 描述了 C# 中单行和多行注释的使用方法。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第三章类型基础" class="pagebody-header">
+ &lt;strong>第三章：类型基础&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 C# 中的基本类型，包括 **`int`**，**`string`** 和 **`bool`**。
+* **`int`** 类型表示 32 位整数。
+* **`string`** 类型表示字符序列。
+* **`bool`** 类型表示布尔值 `true` 或 `false`。
+* 阐述了如何创建自定义类型，并通过一个 `UnitConverter` 类来说明。
+* 解释了 **`public`** 关键字的作用，它用于暴露类的成员给外部访问。
+* 还讲解了 C# 中程序结构的组织，如 `using` 指令，语句和方法声明，类型和命名空间声明，以及顶级语句。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第四章数值类型" class="pagebody-header">
+ &lt;strong>第四章：数值类型&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 详细介绍了 C# 中预定义的数值类型，包括有符号和无符号整数、浮点数和十进制数。
+* 提到了不同数值类型的范围和大小，以及它们在 .NET 中的对应类型。
+* **`int`** 和 **`long`** 是最常用的整数类型，而 **`float`** 和 **`double`** 则用于科学和图形计算，**`decimal`** 用于金融计算。
+* 介绍了数值字面值的表示方式，包括十进制、十六进制和二进制，以及如何使用下划线提高可读性。
+* 讲解了算术运算符，包括 `+`、`-`、`*`、`/` 和 `%`。
+* 解释了增量和减量运算符 (`++` 和 `--`) 的用法。
+* 讨论了整数除法和溢出问题，以及如何使用 `checked` 和 `unchecked` 运算符来处理溢出。
+* 介绍了位运算符，包括 `~`、`&amp;amp;`、`|`、`^`、`&amp;lt;&amp;lt;` 和 `&amp;gt;&amp;gt;`。
+* 讲解了 8 位和 16 位整数类型，以及它们与较大整数类型之间的隐式转换。
+* 解释了浮点数类型的特殊值，如 `NaN`、`+∞`、`-∞` 和 `-0`，以及如何使用 `float.IsNaN` 或 `double.IsNaN` 方法来测试一个值是否为 `NaN`.
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第五章布尔类型和运算符" class="pagebody-header">
+ &lt;strong>第五章：布尔类型和运算符&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 详细介绍了 `bool` 类型，它表示逻辑值 `true` 或 `false`。
+* 解释了相等和比较运算符 (`==`、`!=`、`&amp;lt;`、`&amp;gt;`、`&amp;lt;=` 和 `&amp;gt;=`) 的用法，以及它们如何应用于值类型和引用类型。
+* 讨论了条件运算符 (`&amp;amp;&amp;amp;`、`||` 和 `!`) 的使用，以及短路求值的概念。
+* 介绍了三元条件运算符 (`? :`) 的用法。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第六章字符串和字符" class="pagebody-header">
+ &lt;strong>第六章：字符串和字符&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 `char` 类型，它表示一个 Unicode 字符。
+* 讲解了转义序列，用于表示不能直接表示的字符。
+* 详细介绍了 `string` 类型，它表示一个不可变的 Unicode 字符序列。
+* 讨论了字符串字面值的表示方法，包括普通字符串、逐字字符串和原始字符串。
+* 介绍了字符串的连接、插值和比较方法，以及如何使用 `StringBuilder` 类型进行高效的字符串操作。
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>讲解了原始字符串字面量的特殊规则，包括如何表示多行字符串，如何处理前导和尾随空格，以及如何进行插值。
+* 介绍了字符串的比较，可以使用 &lt;code>CompareTo&lt;/code> 方法，以及如何搜索字符串内的字符和子字符串。
+* 介绍了 UTF-8 字符串的使用方式。
+* 解释了范围（Ranges）的概念，并提供了使用 &lt;code>..&lt;/code> 运算符和 &lt;code>^&lt;/code> 符号进行数组切片的例子。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第七章变量和参数" class="pagebody-header">
+ &lt;strong>第七章：变量和参数&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 解释了变量的概念，以及变量在栈和堆中的存储。
+* 讲解了如何使用 `ref` 修饰符通过引用传递参数，并举例说明。
+* 介绍了可选参数和默认参数值，以及它们在编译时的处理方式。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第八章表达式和运算符" class="pagebody-header">
+ &lt;strong>第八章：表达式和运算符&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 详细介绍了 C# 中的各种运算符，包括一元运算符、二元运算符和三元运算符。
+* 列出了 C# 中运算符的优先级表，并解释了运算符的结合性。
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>详细介绍了 C# 中运算符的种类，包括 primary, unary, multiplicative, additive, shift, relational, equality, bitwise, conditional, null coalescing, conditional(ternary), assignment, and lambda operators.&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第九章空运算符" class="pagebody-header">
+ &lt;strong>第九章：空运算符&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 C# 中用于处理 null 值的三个运算符：null 合并运算符 (`??`)、null 条件运算符 (`?.`) 和 null 合并赋值运算符 (`??=`)。
+* 解释了 `??` 运算符的作用，即如果左侧操作数非 null，则返回左侧操作数，否则返回右侧操作数。
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;p>解释了 &lt;code>?.&lt;/code> 运算符的作用，即如果左侧操作数是 null，则表达式返回 null，否则执行方法或成员访问。&lt;/p></description></item><item><title>C# 12 in a Nutshell</title><link>https://booslip.rpcx.io/posts/c%23-12-in-a-nutshell/</link><pubDate>Thu, 09 Jan 2025 18:56:37 +0800</pubDate><guid>https://booslip.rpcx.io/posts/c%23-12-in-a-nutshell/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章c-和-net-介绍" class="pagebody-header">
+ &lt;strong>第一章：C# 和 .NET 介绍&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* C# 是一种灵活且广泛使用的编程语言。
+* C# 12 是该语言的第九次主要更新。
+* C# 提供了高级抽象和底层效率。
+* 书中代码示例可以在 LINQPad 中以可编辑的交互式方式使用。
+* **原始字符串字面量** 可以是多行的，并且允许使用 `$` 前缀进行插值。
+* `u8` 后缀用于创建 UTF-8 编码的字符串字面量。
+* `file` 访问修饰符限制类型仅在同一文件中访问。
+* C# 11 引入了 checked 运算符和放松了结构体构造函数的要求。
+* 可以将属性应用于 lambda 表达式的目标方法。
+* 嵌套属性模式匹配的简化语法。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二章c-语言基础" class="pagebody-header">
+ &lt;strong>第二章：C# 语言基础&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 C# 的基本语法，包括 **变量**、**类型**、**运算符**和**语句**。
+* 讨论了 **数值类型**，**布尔类型**，**字符串**和**字符**。
+* 涵盖了 **数组**，**变量**和**参数**。
+* 解释了 **表达式和运算符**，包括 **null 运算符**。
+* 描述了 **语句**和**命名空间**。
+* C# 中使用 `//` 进行单行注释，使用 `/* ... */` 进行多行注释。
+* `@` 前缀可以用来使用与保留关键字冲突的标识符。
+* `=` 用于赋值，`==` 用于相等比较。
+* `null` 表示引用不指向任何对象。
+* C# 支持按位运算符，如 `~`, `&amp;amp;`, `|`, `^`, `&amp;lt;&amp;lt;`, `&amp;gt;&amp;gt;`, `&amp;gt;&amp;gt;&amp;gt;`。
+* 浮点类型具有特殊值，如 `NaN`, `+∞`, `-∞`, 和 `-0`。
+* `&amp;amp;&amp;amp;` 和 `||` 运算符用于测试 and 和 or 条件，`!` 运算符表示 not。
+* `char` 类型表示 Unicode 字符，使用单引号。
+* 转义序列用反斜杠 `\` 表示特殊字符。
+* 可以使用 `\u` (或 `\x`) 转义序列通过四位十六进制代码指定 Unicode 字符。
+* `string` 类型表示不可变的 Unicode 字符序列，使用双引号。
+* 原始字符串字面量使用三引号 `&amp;quot;&amp;quot;&amp;quot;` 表示。
+* 数组表示特定类型的固定数量的变量。
+* C# 提供了 `??` (null 合并运算符)和 `??=` (null 合并赋值运算符) 来处理 null 值。
+* `using` 语句用于调用实现了 `IDisposable` 接口的对象的 `Dispose` 方法。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第三章创建-c-中的类型" class="pagebody-header">
+ &lt;strong>第三章：创建 C# 中的类型&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 讨论了类，结构体，接口，委托和泛型。
+* 实例构造函数可以使用 `public`, `internal`, `private`, 和 `protected` 访问修饰符。
+* 可以使用对象初始化器来实例化对象。
+* 泛型类型和方法可以有多个参数。
+* 泛型类型和方法名称可以重载，只要类型参数的数量不同即可。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第四章高级-c" class="pagebody-header">
+ &lt;strong>第四章：高级 C#&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 深入探讨了 **委托**，**事件**，**lambda表达式**和**异常处理**。
+* 解释了 **使用声明** 和 **throw 表达式**。
+* 涵盖了 **try 语句**和**异常**。
+* 讨论了 **可空值类型** 和 **null 运算符**。
+* C# 9 开始可以使用 `and`, `or`, 和 `not` 关键字组合模式。
+* `var` 模式允许重用变量。
+* 运算符可以重载。
+* `true` 和 `false` 运算符可以重载，例如 `SqlBoolean` 结构体。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第五章net-概述" class="pagebody-header">
+ &lt;strong>第五章：.NET 概述&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 .NET 框架和 CLR 的概念。
+* 讨论了 **运行时目标和 TFM** (目标框架标识符)。
+* 概述了 **.NET 的各种功能**，如 **文本处理**，**网络**，**并发**。
+* 讨论了应用程序层，包括 **瘦客户端**和**富客户端**。
+* 涵盖了 **Windows 桌面** UI API，如 WPF 和 Windows Forms。
+* 介绍了 **Roslyn 编译器**。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第六章net-基础" class="pagebody-header">
+ &lt;strong>第六章：.NET 基础&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 详细介绍了 **字符串** 和 **文本处理**，包括 **字符串的构造**，**插值字符串**，**文本编码**和 **Unicode**。
+* 讨论了 **日期和时间** 的表示，包括 `DateTime` 和 `DateTimeOffset` 结构体。
+* 描述了 **标准格式字符串** 和 **解析标志**。
+* 解释了 **数学运算**，如 **舍入**，**最大值/最小值**，**平方根**，**对数**和**三角函数**。
+* 讨论了 **随机数生成**。
+* 涵盖了 **相等性协议** 和 **比较协议**，包括 `==` 和 `!=` 运算符， `Equals` 方法和 `IComparable` 接口。
+* 介绍了 **实用工具类**，如 `Console`，`Environment` 和 `Process`。
+* 讨论了 **集合** 的相关知识，如 `SortedSet&amp;lt;T&amp;gt;`。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第七章linq" class="pagebody-header">
+ &lt;strong>第七章：LINQ&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 LINQ (语言集成查询) 的架构和基本概念。
+* **LINQ 的基本数据单元是序列和元素**。
+* **查询运算符的转换构成了 “装饰”**。
+* `Where` 方法构建一个装饰器包装器序列。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第八章linq-运算符" class="pagebody-header">
+ &lt;strong>第八章：LINQ 运算符&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 深入探讨了 LINQ 的各种运算符，例如 **选择**，**过滤**，**排序**和**分组**。
+* 介绍了 **元素运算符**，例如 `MinBy`，`MaxBy` 和 `DefaultIfEmpty`。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第九章linq-to-xml" class="pagebody-header">
+ &lt;strong>第九章：LINQ to XML&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 **LINQ to XML** 的 API。
+* 讨论了 **XNode**, **XElement**, **XDocument** 和 **XAttribute** 等 XML 类型的类和概念。
+* 解释了如何使用 `XDeclaration` 来设置 XML 文档的编码和其他属性。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十章其他-xml-和-json-技术" class="pagebody-header">
+ &lt;strong>第十章：其他 XML 和 JSON 技术&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了低级的 `XmlReader`/`XmlWriter` 类。
+* 提及了使用 JSON (JavaScript 对象表示法) 的类型，它是 XML 的流行替代品。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十一章动态编程" class="pagebody-header">
+ &lt;strong>第十一章：动态编程&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 涵盖了代码生成的相关知识
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十二章垃圾回收" class="pagebody-header">
+ &lt;strong>第十二章：垃圾回收&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 讨论了垃圾回收和 `IDisposable` 接口。
+* 介绍了 **终结器** 的概念，并讨论了 **复活** 的问题。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十三章诊断" class="pagebody-header">
+ &lt;strong>第十三章：诊断&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code> * 讨论了预处理器指令，例如 `#if`, `#else`, 和 `#endif`。
+ * 介绍了如何使用 **Windows 事件日志**。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十四章并发和异步" class="pagebody-header">
+ &lt;strong>第十四章：并发和异步&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 讨论了 **线程** 的概念，以及如何使用 **多线程**。
+* 介绍了 **异步模式**，例如 **EAP** (基于事件的异步模式) 和 **BackgroundWorker**。
+* 涵盖了 **取消** 和 **超时**。
+* `TrySetResult`，`TrySetException` 和 `TrySetCanceled` 方法用于发出任务完成信号。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十五章流和-io" class="pagebody-header">
+ &lt;strong>第十五章：流和 I/O&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了流的架构，包括 **后备存储**，**装饰器** 和 **适配器**。
+* 描述了各种类型的 **流**，例如 `FileStream`，`MemoryStream` 和 `BufferedStream`。
+* 讨论了 **命名管道** 和 **匿名管道**。
+* 介绍了 **文本适配器**，如 `StreamReader` 和 `StreamWriter`。
+* 解释了 **文本编码**，包括 ASCII 和 UTF-8。
+* 描述了 **二进制适配器**，如 `BinaryReader` 和 `BinaryWriter`。
+* 介绍了 **压缩流**，如 `DeflateStream` 和 `BrotliStream`。
+* 讨论了 **文件和目录操作**，包括 `File`, `Directory` 和 `Path` 类。
+* 介绍了 **操作系统的安全性** 和用户帐户控制 (UAC)。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十六章网络" class="pagebody-header">
+ &lt;strong>第十六章：网络&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 讨论了网络架构，包括 **应用层**和 **传输层**。
+* 介绍了 **URI** (统一资源标识符)。
+* 描述了如何使用 `HttpClient` 发送 HTTP 请求。
+* 解释了如何使用 `HttpListener` 构建 HTTP 服务器。
+* 涵盖了如何使用 `SmtpClient` 发送电子邮件。
+* 介绍了如何使用 TCP 进行通信，包括 `TcpClient`，`TcpListener` 和 `Socket` 类。
+* 讨论了如何使用 TCP 接收 POP3 邮件。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十七章程序集" class="pagebody-header">
+ &lt;strong>第十七章：程序集&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>讨论了 &lt;strong>程序集&lt;/strong> 的相关概念，如 .exe 文件，程序集清单，以及如何使用 .NET 程序集&lt;/li>
+&lt;li>&lt;strong>第十八章：本地化&lt;/strong>
+&lt;ul>
+&lt;li>讨论了 &lt;strong>本地化&lt;/strong> 的相关概念，并介绍了如何使用 .NET 实现&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十九章动态编程" class="pagebody-header">
+ &lt;strong>第十九章：动态编程&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 讨论了动态程序集和类型生成。
+* 介绍了如何使用反射来动态访问类型和方法。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二十章密码学" class="pagebody-header">
+ &lt;strong>第二十章：密码学&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 **Windows 数据保护 API (DPAPI)**。
+* 讨论了 **哈希** 算法，如 SHA1 和 SHA256，并介绍了 **哈希密码** 的方法。
+* 介绍了 **对称加密** 算法，如 Rijndael 和 AES。
+* 涵盖了 **公钥加密** 和 **签名**，包括 RSA 算法。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二十一章高级线程" class="pagebody-header">
+ &lt;strong>第二十一章：高级线程&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 讨论了 **独占锁定** 构造，如 `lock` 语句，`Mutex` 和 `SpinLock`。
+* 介绍了 **非独占锁定** 构造，如 `Semaphore` 和 `ReaderWriterLockSlim`。
+* 涵盖了 **事件等待句柄**，如 `AutoResetEvent` 和 `ManualResetEvent`。
+* 讨论了 **Barrier 类**，用于实现线程执行屏障。
+* 介绍了 **定时器**，包括 `System.Threading.Timer` 和 `PeriodicTimer`。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二十二章任务" class="pagebody-header">
+ &lt;strong>第二十二章：任务&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code> * 介绍了 **任务** 的相关知识，包括 `Task` 类 和 `TaskCreationOptions`。
+ * 介绍了任务的延续，包括 `ContinueWith` 方法和各种 `NotOn*` 标志
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二十三章spant-和-memoryt" class="pagebody-header">
+ &lt;strong>第二十三章：Span&lt;!-- raw HTML omitted --> 和 Memory&lt;!-- raw HTML omitted -->&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了 `Span&amp;lt;T&amp;gt;` 和 `Memory&amp;lt;T&amp;gt;` 的概念，以及它们与数组的不同。
+* 讨论了如何使用 `Span&amp;lt;T&amp;gt;` 进行 **切片** 和 **性能优化**。
+* 介绍了 `Utf8Formatter` 和 `Utf8Parser` 类，用于格式化和解析 UTF-8 数据。
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二十四章不安全代码" class="pagebody-header">
+ &lt;strong>第二十四章：不安全代码&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;pre>&lt;code>* 介绍了如何使用 **指针** 和 **不安全代码** 来提高性能
+* 介绍了如何使用 **P/Invoke** 调用外部方法
+&lt;/code>&lt;/pre></description></item><item><title>Head First Software Architecture</title><link>https://booslip.rpcx.io/posts/head-first-software-architecture/</link><pubDate>Thu, 09 Jan 2025 18:38:26 +0800</pubDate><guid>https://booslip.rpcx.io/posts/head-first-software-architecture/</guid><description>&lt;p>好的，我将根据提供的资料，按照章节总结知识点，并用中文回复，力求做到信、雅、达。&lt;/p>
 
 &lt;div class="component-content pagebody component">
  &lt;h2 id="第一章软件架构概述" class="pagebody-header">
