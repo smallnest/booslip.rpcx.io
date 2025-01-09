@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>软件架构 on 竹简书摘</title><link>https://booslip.rpcx.io/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/</link><description>Recent content in 软件架构 on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Thu, 09 Jan 2025 18:38:26 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml"/><item><title>Head First Software Architecture</title><link>https://booslip.rpcx.io/posts/head-first-software-architecture/</link><pubDate>Thu, 09 Jan 2025 18:38:26 +0800</pubDate><guid>https://booslip.rpcx.io/posts/head-first-software-architecture/</guid><description>&lt;p>好的，我将根据提供的资料，按照章节总结知识点，并用中文回复，力求做到信、雅、达。&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章软件架构概述" class="pagebody-header">
+ &lt;strong>第一章：软件架构概述&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>软件架构学习的挑战&lt;/strong>: 大脑会倾向于认为软件架构不重要，而将注意力放在其他事情上。但可以通过技巧让大脑意识到软件架构的重要性。&lt;/li>
+&lt;li>&lt;strong>软件架构的核心&lt;/strong>: &lt;strong>架构特性（Architectural Characteristics）&lt;/strong> 是任何系统的基本构建模块。没有它们，就无法进行架构决策，选择架构风格，甚至无法创建逻辑架构。&lt;/li>
+&lt;li>&lt;strong>软件架构的本质&lt;/strong>: 软件架构没有最佳实践，需要仔细分析每种情况并做出决策。&lt;/li>
+&lt;li>&lt;strong>类比&lt;/strong>: 可以通过房屋或花园的类比来理解软件架构。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二章架构特性" class="pagebody-header">
+ &lt;strong>第二章：架构特性&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>架构特性的定义&lt;/strong>: 架构特性是架构的基石，决定了系统需要支持什么。它们也被称为非功能性需求、系统质量属性或 &amp;ldquo;-ilities&amp;rdquo;。&lt;/li>
+&lt;li>&lt;strong>架构特性的重要性&lt;/strong>: 它们有助于做出架构决策和分析重要的权衡。&lt;/li>
+&lt;li>&lt;strong>常见的架构特性&lt;/strong>: 例如可伸缩性（scalability）、可靠性（reliability）和可测试性（testability）等。&lt;/li>
+&lt;li>&lt;strong>显式与隐式特性&lt;/strong>: 显式特性在需求中明确指出，而隐式特性则影响架构决策，但未明确列出，如安全性。&lt;/li>
+&lt;li>&lt;strong>复合特性&lt;/strong>: 多个特性组合成新的特性，如敏捷性（agility），它包括可测试性、可部署性和模块化等。&lt;/li>
+&lt;li>&lt;strong>优先级&lt;/strong>: 需要根据上下文确定架构特性的优先级，并且优化一个特性可能会牺牲另一个特性。&lt;/li>
+&lt;li>&lt;strong>没有标准列表&lt;/strong>: 架构特性的列表并非固定不变，会随着软件开发生态的变化而变化。&lt;/li>
+&lt;li>&lt;strong>架构特性与逻辑组件&lt;/strong>: 架构特性和逻辑组件共同决定了架构风格。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第三章权衡与决策" class="pagebody-header">
+ &lt;strong>第三章：权衡与决策&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>软件架构的第一定律&lt;/strong>：&lt;strong>一切皆权衡&lt;/strong>。每个决策都包含权衡，没有无代价的决策。&lt;/li>
+&lt;li>&lt;strong>战略与战术决策&lt;/strong>: 战略决策更具架构性，需要更多思考和规划，通常是长期的。&lt;/li>
+&lt;li>&lt;strong>架构与设计的区别&lt;/strong>：架构决策具有显著的权衡，更具战略性，而设计决策则更偏向实现细节。&lt;/li>
+&lt;li>&lt;strong>权衡分析&lt;/strong>：包括找出特定方法的好处和坏处，以获得完整的信息。&lt;/li>
+&lt;li>&lt;strong>ADR (Architecture Decision Record)&lt;/strong>: 用于记录架构决策，包括标题、状态、上下文、决策和后果。
+&lt;ul>
+&lt;li>&lt;strong>ADR 的状态&lt;/strong>: 包括 RFC（征求意见）、Proposed（提议中）、Accepted（已接受）和 Superseded（已取代）。&lt;/li>
+&lt;li>&lt;strong>ADR 的内容&lt;/strong>: 包括上下文（决策的环境和约束）、决策（具体要做出的选择）和后果（决策带来的影响）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>异步与同步通信的权衡&lt;/strong>: 异步通信可以提高响应速度和可用性，而同步通信则更易于管理事务和错误。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第四章逻辑组件" class="pagebody-header">
+ &lt;strong>第四章：逻辑组件&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>逻辑组件的定义&lt;/strong>: 逻辑组件是系统的构建模块，执行特定的功能。&lt;/li>
+&lt;li>&lt;strong>逻辑组件的表示&lt;/strong>: 通常通过目录或命名空间来表示。&lt;/li>
+&lt;li>&lt;strong>逻辑组件的特性&lt;/strong>: 每个逻辑组件都应该在系统中具有明确的角色和责任。&lt;/li>
+&lt;li>&lt;strong>识别逻辑组件的方法&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>工作流方法&lt;/strong>: 根据工作流程的步骤来识别组件。&lt;/li>
+&lt;li>&lt;strong>参与者/动作方法&lt;/strong>: 根据系统中参与者的动作来识别组件。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>避免实体陷阱&lt;/strong>: 命名组件时避免使用 &amp;ldquo;manager&amp;rdquo; 或 &amp;ldquo;supervisor&amp;rdquo; 等词语。&lt;/li>
+&lt;li>&lt;strong>组件耦合&lt;/strong>:
+&lt;ul>
+&lt;li>&lt;strong>传入耦合 (Afferent Coupling, CA)&lt;/strong>: 依赖于当前组件的其他组件的数量。&lt;/li>
+&lt;li>&lt;strong>传出耦合 (Efferent Coupling, CE)&lt;/strong>: 当前组件依赖的其他组件的数量。&lt;/li>
+&lt;li>&lt;strong>总耦合 (Total Coupling, CT)&lt;/strong>: 传入耦合和传出耦合的总和。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>耦合的重要性&lt;/strong>: 松耦合可以降低组件之间的依赖性，但也会带来权衡。&lt;/li>
+&lt;li>&lt;strong>逻辑组件的组织&lt;/strong>: 逻辑组件通常与源代码目录结构对应。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第五章架构风格" class="pagebody-header">
+ &lt;strong>第五章：架构风格&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>架构风格的分类&lt;/strong>: 可以根据代码的划分方式（技术关注点或领域关注点）以及部署方式（单体或分布式）进行分类。&lt;/li>
+&lt;li>&lt;strong>单体架构&lt;/strong>: 将所有逻辑组件部署为一个单元。&lt;/li>
+&lt;li>&lt;strong>分布式架构&lt;/strong>: 将逻辑组件分散到多个单元中。&lt;/li>
+&lt;li>&lt;strong>架构风格的选择&lt;/strong>: 需要考虑多种因素，包括问题的复杂性和时间紧迫性。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第六章分层架构" class="pagebody-header">
+ &lt;strong>第六章：分层架构&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>分层架构的特点&lt;/strong>: 按照技术关注点将系统划分为不同的层，例如表示层、业务规则层和持久层。&lt;/li>
+&lt;li>&lt;strong>层与组件的关系&lt;/strong>: 领域组件通常会跨越多个物理层。&lt;/li>
+&lt;li>&lt;strong>分层架构的优缺点&lt;/strong>: 简单易懂，但可能难以适应领域变化。&lt;/li>
+&lt;li>&lt;strong>适用场景&lt;/strong>: 适合简单且不需要频繁更改的系统。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第七章模块化单体架构" class="pagebody-header">
+ &lt;strong>第七章：模块化单体架构&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>模块化单体架构的特点&lt;/strong>: 在单体架构的基础上，按照业务领域对系统进行划分，形成多个模块。&lt;/li>
+&lt;li>&lt;strong>模块化的优势&lt;/strong>: 提高可维护性、可测试性和可部署性，降低变更风险。&lt;/li>
+&lt;li>&lt;strong>模块间的通信&lt;/strong>: 通过模块的 API 进行间接通信。&lt;/li>
+&lt;li>&lt;strong>模块化与分层&lt;/strong>: 模块化单体架构可以包含分层架构，并且每个模块可以有自己的层。&lt;/li>
+&lt;li>&lt;strong>数据模式&lt;/strong>: 每个模块都有自己的数据模式.&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第八章微内核架构" class="pagebody-header">
+ &lt;strong>第八章：微内核架构&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>微内核架构的特点&lt;/strong>: 将系统分为一个核心部分（core）和多个插件（plugin）。&lt;/li>
+&lt;li>&lt;strong>核心的功能&lt;/strong>: 核心提供最基本的功能，插件负责扩展和定制功能。&lt;/li>
+&lt;li>&lt;strong>插件的类型&lt;/strong>: 可以是单体或分布式的。&lt;/li>
+&lt;li>&lt;strong>微内核的“微内核性”&lt;/strong>: 取决于核心在没有插件的情况下有多大的功能以及核心的易变性。&lt;/li>
+&lt;li>&lt;strong>适用场景&lt;/strong>: 适用于需要高度定制和扩展的系统，例如 IDE 和电子回收系统。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第九章架构实践" class="pagebody-header">
+ &lt;strong>第九章：架构实践&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>综合运用&lt;/strong>: 本章通过 TripEZ 旅行应用程序，综合运用了之前章节的知识，包括架构特性、逻辑组件和架构风格，来构建一个完整的架构。&lt;/li>
+&lt;li>&lt;strong>架构决策过程&lt;/strong>: 包括确定架构特性、构建逻辑架构、做出架构决策和选择架构风格。&lt;/li>
+&lt;li>&lt;strong>没有正确答案&lt;/strong>: 软件架构没有绝对的正确答案，重点在于分析权衡并为决策提供合理依据。&lt;/li>
+&lt;li>&lt;strong>多种可能的解决方案&lt;/strong>: 对于同一个问题，可以有多种可行的架构解决方案。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十章微服务架构" class="pagebody-header">
+ &lt;strong>第十章：微服务架构&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>微服务架构的特点&lt;/strong>: 将应用程序分解为一组小的、独立部署的服务。&lt;/li>
+&lt;li>&lt;strong>服务粒度&lt;/strong>: 微服务不宜过大或过小，需要找到合适的粒度。&lt;/li>
+&lt;li>&lt;strong>数据所有权&lt;/strong>: 每个微服务拥有自己的数据。&lt;/li>
+&lt;li>&lt;strong>共享功能&lt;/strong>: 可以使用共享服务或共享库来实现。&lt;/li>
+&lt;li>&lt;strong>工作流管理&lt;/strong>: 可以通过编排（Orchestration）或协作（Choreography）来管理。
+&lt;ul>
+&lt;li>&lt;strong>编排&lt;/strong>: 由一个中心服务来协调其他微服务的调用。&lt;/li>
+&lt;li>&lt;strong>协作&lt;/strong>: 微服务之间通过事件进行通信，无需中央协调者。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第十一章事件驱动架构" class="pagebody-header">
+ &lt;strong>第十一章：事件驱动架构&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>事件驱动架构的特点&lt;/strong>: 通过事件进行异步通信，将处理分解为独立的服务。&lt;/li>
+&lt;li>&lt;strong>事件的定义&lt;/strong>: 已发生的事情，通常用过去式表示。&lt;/li>
+&lt;li>&lt;strong>消息与事件&lt;/strong>: 消息是命令，而事件是通知。&lt;/li>
+&lt;li>&lt;strong>异步通信&lt;/strong>: 服务发送事件后无需等待响应，提高了系统的响应速度和可用性。&lt;/li>
+&lt;li>&lt;strong>同步通信&lt;/strong>: 发送服务必须等待接收服务响应。&lt;/li>
+&lt;li>&lt;strong>数据耦合&lt;/strong>: 在事件驱动架构中，数据可能会形成耦合点。&lt;/li>
+&lt;li>&lt;strong>数据拓扑&lt;/strong>: 数据库可以是单体也可以是服务专有的。&lt;/li>
+&lt;li>&lt;strong>事件驱动架构的优缺点&lt;/strong>: 具有高弹性、高可用性，但也更复杂。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>附录：其他&lt;/strong>&lt;/p></description></item></channel></rss>
