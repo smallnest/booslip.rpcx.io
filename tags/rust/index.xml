@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rust on 竹简书摘</title><link>https://booslip.rpcx.io/tags/rust/</link><description>Recent content in Rust on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Wed, 01 Jan 2025 10:47:55 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/tags/rust/index.xml" rel="self" type="application/rss+xml"/><item><title>Code Like a Pro in Rust</title><link>https://booslip.rpcx.io/posts/code-like-a-pro-in-rust/</link><pubDate>Wed, 01 Jan 2025 10:47:55 +0800</pubDate><guid>https://booslip.rpcx.io/posts/code-like-a-pro-in-rust/</guid><description>&lt;p>本书对 Rust 初学者合适，没有介绍高深的Rust概念。&lt;/p>
+&lt;p>好的，这是一份按照章节对《Code Like a Pro in Rust》这本书的总结和摘要，着重于关键概念和信息，以中文呈现：&lt;/p></description></item><item><title>Learn Rust in a Month of Lunches</title><link>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</link><pubDate>Wed, 01 Jan 2025 09:34:21 +0800</pubDate><guid>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>第一章：Rust 基础入门&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>核心概念：&lt;/strong> 本章主要介绍了 Rust 的基本语法和概念，包括变量声明、代码块、打印输出、类型转换和字符串。&lt;/li>
+&lt;li>&lt;strong>变量与代码块：&lt;/strong>
+&lt;ul>
+&lt;li>使用 &lt;code>let&lt;/code> 关键字声明变量，代码块用 &lt;code>{}&lt;/code> 表示。变量的作用域（lifetime）限制在代码块内部。&lt;/li>
+&lt;li>&lt;strong>Shadowing&lt;/strong> (遮蔽) 是指用新的 &lt;code>let&lt;/code> 绑定同名变量，使之前的变量失效。&lt;/li>
+&lt;li>变量的类型通常由 Rust 自动推断，但可以使用 &lt;code>as&lt;/code> 关键字进行显式类型转换。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>打印输出:&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>println!&lt;/code> 宏用于打印输出，&lt;code>{}&lt;/code> 用来捕获变量的值。&lt;code>{:?}&lt;/code> 用于调试输出，&lt;code>{:#?}&lt;/code> 用于更美观的调试输出，可以分行显示结构体等复杂类型的内容。&lt;/li>
+&lt;li>&lt;code>print!&lt;/code> 宏与 &lt;code>println!&lt;/code> 类似，但不添加换行符。&lt;/li>
+&lt;li>可以使用 &lt;code>r#&amp;quot;&amp;quot;#&lt;/code> 来创建原始字符串，避免转义字符的麻烦。&lt;/li>
+&lt;li>在字符串前加 &lt;code>b&lt;/code> 可以打印字符串的字节表示。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>字符串类型：&lt;/strong> &lt;code>&amp;amp;str&lt;/code> 是一种字符串切片类型，后续章节会详细介绍。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二章：内存、变量与所有权&lt;/strong>&lt;/p></description></item><item><title>Idiomatic Rust</title><link>https://booslip.rpcx.io/posts/idiomatic-rust/</link><pubDate>Sat, 28 Dec 2024 19:09:04 +0800</pubDate><guid>https://booslip.rpcx.io/posts/idiomatic-rust/</guid><description>&lt;p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。&lt;/p></description></item><item><title>Async Rust</title><link>https://booslip.rpcx.io/posts/async-rust/</link><pubDate>Sat, 28 Dec 2024 18:58:34 +0800</pubDate><guid>https://booslip.rpcx.io/posts/async-rust/</guid><description>&lt;p>好的，我将按照您的要求，对每个章节的内容进行总结，并尽可能地包含关键代码，使其内容详实且易于理解。&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章异步简介" class="pagebody-header">
+ 第一章：异步简介
+ &lt;/h2>
+&lt;/div>&lt;p>本章主要介绍了异步编程的概念以及在Rust中的应用。&lt;/p></description></item><item><title>Effective Rust</title><link>https://booslip.rpcx.io/posts/effective-rust/</link><pubDate>Sat, 28 Dec 2024 18:42:32 +0800</pubDate><guid>https://booslip.rpcx.io/posts/effective-rust/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章类型types" class="pagebody-header">
+ 第一章：类型（Types）
+ &lt;/h2>
+&lt;/div>&lt;p>本章主要讨论 Rust 的类型系统及其在表达数据结构和行为方面的应用。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>使用类型系统表达数据结构&lt;/strong>：
+&lt;ul>
+&lt;li>强调 Rust 的类型系统能够帮助开发者清晰地表达数据结构，提高代码的可读性和可维护性。&lt;/li>
+&lt;li>介绍了 &lt;strong>元组结构体 (tuple structs)&lt;/strong>，其字段通过数字索引访问，例如 &lt;code>m.0&lt;/code>。&lt;/li>
+&lt;li>深入探讨了 &lt;strong>枚举 (enums)&lt;/strong>，它是 Rust 类型系统的核心。枚举可以定义一组互斥的值，并可以附带数值。
+&lt;div class="component-content pagebody component code">
+ 
+ 
+ 
+ &lt;div class="">&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">enum&lt;/span> &lt;span style="color:#a6e22e">HttpResultCode&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Ok &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">200&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> NotFound &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">404&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Teapot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">418&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
+ 
+&lt;/div>&lt;/li>
+&lt;li>使用枚举可以增强代码的可读性和类型安全性，避免使用布尔值参数时可能出现的混淆。例如，使用 &lt;code>Sides::Both&lt;/code> 和 &lt;code>Output::BlackAndWhite&lt;/code> 比使用 &lt;code>true&lt;/code> 和 &lt;code>false&lt;/code> 更清晰易懂。&lt;/li>
+&lt;li>&lt;strong>match 表达式&lt;/strong> 用于处理枚举的不同变体，Rust 编译器会强制检查所有变体是否都被覆盖，从而避免遗漏情况。&lt;/li>
+&lt;li>如果枚举仅仅是一个 C 风格的数值列表，可以使用 &lt;code>non_exhaustive&lt;/code> 属性来避免添加新变体时的破坏性变更。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>使用类型系统表达通用行为&lt;/strong>：
+&lt;ul>
+&lt;li>函数 (functions) 可以通过 &lt;code>fn&lt;/code> 关键字定义，并可以指定返回值类型。函数也可以仅用于副作用，没有返回值。
+&lt;div class="component-content pagebody component code">
+ 
+ 
+ 
+ &lt;div class="">&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">div&lt;/span>(x: &lt;span style="color:#66d9ef">f64&lt;/span>, y: &lt;span style="color:#66d9ef">f64&lt;/span>) -&amp;gt; &lt;span style="color:#66d9ef">f64&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> y &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0.0&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">f64&lt;/span>::&lt;span style="color:#66d9ef">NAN&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">/&lt;/span> y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">show&lt;/span>(x: &lt;span style="color:#66d9ef">f64&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> println!(&lt;span style="color:#e6db74">&amp;#34;x = &lt;/span>&lt;span style="color:#e6db74">{x}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
+ 
+&lt;/div>&lt;/li>
+&lt;li>&lt;strong>方法 (methods)&lt;/strong> 与特定的数据结构关联，通过 &lt;code>self&lt;/code> 引用该数据结构。方法可以修改、读取或消耗数据结构. 方法可以被添加到 &lt;code>enum&lt;/code> 类型和 &lt;code>struct&lt;/code> 类型。
+&lt;div class="component-content pagebody component code">
+ 
+ 
+ 
+ &lt;div class="">&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">enum&lt;/span> &lt;span style="color:#a6e22e">Shape&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Rectangle { width: &lt;span style="color:#66d9ef">f64&lt;/span>, height: &lt;span style="color:#66d9ef">f64&lt;/span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Circle { radius: &lt;span style="color:#66d9ef">f64&lt;/span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span> Shape {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pub&lt;/span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">area&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) -&amp;gt; &lt;span style="color:#66d9ef">f64&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">match&lt;/span> self {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Shape::Rectangle { width, height } &lt;span style="color:#f92672">=&amp;gt;&lt;/span> width &lt;span style="color:#f92672">*&lt;/span> height,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Shape::Circle { radius } &lt;span style="color:#f92672">=&amp;gt;&lt;/span> std::&lt;span style="color:#66d9ef">f64&lt;/span>::consts::&lt;span style="color:#66d9ef">PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> radius &lt;span style="color:#f92672">*&lt;/span> radius,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
+ 
+&lt;/div>&lt;/li>
+&lt;li>&lt;strong>函数指针 (function pointers)&lt;/strong> 可以作为参数传递，允许代码在运行时改变行为。函数指针类型实现了 &lt;code>Copy&lt;/code> 和 &lt;code>Eq&lt;/code> 等 trait. 函数的名称需要显式转换为 &lt;code>fn&lt;/code> 类型.&lt;/li>
+&lt;li>&lt;strong>闭包 (closures)&lt;/strong> 是一种匿名函数，可以捕获其所在环境中的变量。闭包通过 &lt;code>FnOnce&lt;/code>、&lt;code>FnMut&lt;/code> 和 &lt;code>Fn&lt;/code> 等 trait 来表达不同的捕获行为. 使用 &lt;strong>最通用的 &lt;code>Fn*&lt;/code> trait&lt;/strong> 可以为调用者提供最大的灵活性.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优先使用 &lt;code>Option&lt;/code> 和 &lt;code>Result&lt;/code> 的转换方法&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;code>Option&amp;lt;T&amp;gt;&lt;/code> 用于表示可能存在或不存在的值，而 &lt;code>Result&amp;lt;T, E&amp;gt;&lt;/code> 用于表示可能成功或失败的操作。&lt;/li>
+&lt;li>标准库为 &lt;code>Option&lt;/code> 和 &lt;code>Result&lt;/code> 提供了多种转换方法，以避免显式使用 &lt;code>match&lt;/code> 表达式，从而使代码更简洁。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优先使用惯用的错误类型&lt;/strong>：
+&lt;ul>
+&lt;li>当函数可能产生多种不同类型的错误时，可以使用枚举 (enum) 来统一表示。&lt;/li>
+&lt;li>&lt;code>From&lt;/code> trait 可以实现不同错误类型之间的自动转换，配合 &lt;code>?&lt;/code> 操作符，可以简化错误处理.&lt;/li>
+&lt;li>可以使用 &lt;code>thiserror&lt;/code> crate 来简化错误类型定义。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>理解类型转换&lt;/strong>：
+&lt;ul>
+&lt;li>Rust 中的类型转换通过 &lt;code>From&lt;/code> 和 &lt;code>Into&lt;/code> trait 实现。如果类型 &lt;code>U&lt;/code> 实现了 &lt;code>From&amp;lt;T&amp;gt;&lt;/code>，那么类型 &lt;code>T&lt;/code> 会自动实现 &lt;code>Into&amp;lt;U&amp;gt;&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>Coercion (强制转换)&lt;/strong> 是一种自动类型转换机制，可以发生在某些情况下，例如：数组到切片、具体类型到 trait 对象、较长的生命周期到较短的生命周期。用户定义的类型可以通过实现 &lt;code>Deref&lt;/code> 和 &lt;code>DerefMut&lt;/code> trait 来影响 coercion 行为。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>拥抱 newtype 模式&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>newtype 模式&lt;/strong> 是指创建一个包含单个字段的元组结构体，可以为现有类型赋予新的语义，并解决一些类型安全问题。&lt;/li>
+&lt;li>例如，可以使用 newtype 模式来避免单位转换错误。&lt;/li>
+&lt;li>newtype 模式也可以用于绕过孤儿规则 (orphan rule)，为外部类型实现外部 trait。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>使用 Builder 模式处理复杂类型&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>Builder 模式&lt;/strong> 可以简化复杂类型的构造过程，允许用户链式调用 setter 方法来设置字段值。&lt;/li>
+&lt;li>builder 可以用于创建多个实例，并且可以克隆模板。&lt;/li>
+&lt;li>可以使用宏 (macros) 或现有的 crate（如 &lt;code>derive_builder&lt;/code>）来减少 builder 模式的样板代码。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>熟悉引用和指针类型&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>引用 (references)&lt;/strong> 是一种不拥有数据的指针，分为可变引用 (&lt;code>&amp;amp;mut T&lt;/code>) 和不可变引用 (&lt;code>&amp;amp;T&lt;/code>)。&lt;/li>
+&lt;li>&lt;strong>切片 (slices)&lt;/strong> 可以引用数组的一部分。&lt;/li>
+&lt;li>&lt;strong>Vec&lt;!-- raw HTML omitted -->&lt;/strong> 是一种动态数组，可以增长和缩小。&lt;/li>
+&lt;li>&lt;strong>Trait 对象&lt;/strong> 是指向实现了特定 trait 的具体类型的指针，通过虚表 (vtable) 实现动态分发。&lt;/li>
+&lt;li>&lt;code>Deref&lt;/code> 和 &lt;code>DerefMut&lt;/code> trait 用于智能指针类型，允许像普通引用一样访问它们指向的数据。&lt;/li>
+&lt;li>&lt;code>AsRef&lt;/code> 和 &lt;code>AsMut&lt;/code> trait 用于类型之间的引用转换。&lt;/li>
+&lt;li>&lt;code>Borrow&lt;/code> 和 &lt;code>BorrowMut&lt;/code> trait 用于处理引用和被移动的值。&lt;/li>
+&lt;li>&lt;code>Cow&lt;/code> 类型可以持有拥有的数据或借用的数据的引用。&lt;/li>
+&lt;li>&lt;code>Rc&amp;lt;T&amp;gt;&lt;/code> 用于在单线程环境中共享所有权。&lt;code>Weak&amp;lt;T&amp;gt;&lt;/code> 是 &lt;code>Rc&amp;lt;T&amp;gt;&lt;/code> 的弱引用。&lt;/li>
+&lt;li>&lt;code>Arc&amp;lt;T&amp;gt;&lt;/code> 是 &lt;code>Rc&amp;lt;T&amp;gt;&lt;/code> 的线程安全版本，使用原子计数器。&lt;/li>
+&lt;li>&lt;code>Mutex&amp;lt;T&amp;gt;&lt;/code> 用于在多线程环境中保护可变数据。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>考虑使用迭代器转换而不是显式循环&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>迭代器 (iterators)&lt;/strong> 提供了一种处理集合的便捷方式，避免显式循环。&lt;/li>
+&lt;li>迭代器转换方法可以链式调用，实现复杂的数据处理操作。例如 &lt;code>filter&lt;/code>, &lt;code>take&lt;/code>, &lt;code>map&lt;/code>, &lt;code>sum&lt;/code>.&lt;/li>
+&lt;li>&lt;code>iter()&lt;/code> 方法用于创建不可变迭代器，&lt;code>iter_mut()&lt;/code> 方法用于创建可变迭代器.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二章trait" class="pagebody-header">
+ 第二章：Trait
+ &lt;/h2>
+&lt;/div>&lt;p>本章主要介绍 Rust 中的 trait 以及一些常用的标准 trait。&lt;/p></description></item><item><title>Rust Atomics and Locks</title><link>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</link><pubDate>Sat, 28 Dec 2024 12:43:47 +0800</pubDate><guid>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</guid><description>&lt;p>&lt;strong>前言&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>本书作者 Mara Bos 在 Rust 标准库团队工作，并有多年并发实时系统开发经验。&lt;/li>
+&lt;li>本书的重点是 Rust 中 &lt;strong>底层的并发&lt;/strong> 实现，而不是高级的抽象。&lt;/li>
+&lt;li>本书适合那些对并发编程的底层机制感兴趣的读者，例如原子操作、锁、内存排序等.&lt;/li>
+&lt;li>本书通过从零开始构建各种并发原语，来深入理解其工作原理.&lt;/li>
+&lt;li>本书的写作灵感来源于 Rust 社区关于并发的讨论，作者希望通过实践来深入理解软件安全特性.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>目录&lt;/strong>&lt;/p></description></item><item><title>Command Line Rust</title><link>https://booslip.rpcx.io/posts/command-line-rust/</link><pubDate>Sat, 28 Dec 2024 10:14:48 +0800</pubDate><guid>https://booslip.rpcx.io/posts/command-line-rust/</guid><description>&lt;p>书中配套代码：&lt;a href="https://github.com/kyclark/command-line-rust">kyclark/command-line-rust&lt;/a>&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="前言" class="pagebody-header">
+ 前言
+ &lt;/h2>
+&lt;/div>&lt;p>本书作者在前言中分享了他学习编程的经验，强调了&lt;strong>实践的重要性&lt;/strong>。作者认为，仅仅阅读参考书籍是不足以掌握一门编程语言的，需要通过实际编写程序来应用所学知识。作者还提到，&lt;strong>学习如何学习一门语言&lt;/strong>是程序员最重要的技能。Rust 语言在语法上与 C 语言类似，例如 for 循环、分号结尾的语句和用花括号表示的代码块。Rust 通过 &lt;strong>borrow checker&lt;/strong> 来保证内存安全，同时不会牺牲性能。Rust 程序可以编译成原生二进制代码，其运行速度通常可以与 C 或 C++ 编写的程序相媲美。Rust 从函数式语言如 Haskell 中借鉴了一些概念，例如，变量默认是&lt;strong>不可变的&lt;/strong>，函数是&lt;strong>一等公民&lt;/strong>，可以使用&lt;strong>枚举和 sum 类型&lt;/strong>表示函数可以返回 &lt;code>Ok&lt;/code> 或 &lt;code>Err&lt;/code>。书中还提供了代码示例下载链接和技术问题反馈邮箱。作者感谢了 Rust 社区的贡献，以及家人和朋友的支持。&lt;/p></description></item></channel></rss>

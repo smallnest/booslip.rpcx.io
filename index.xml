@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>竹简书摘</title><link>https://booslip.rpcx.io/</link><description>Recent content on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Thu, 09 Jan 2025 18:27:45 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Network Programming With Go</title><link>https://booslip.rpcx.io/posts/network-programming-with-go/</link><pubDate>Thu, 09 Jan 2025 18:27:45 +0800</pubDate><guid>https://booslip.rpcx.io/posts/network-programming-with-go/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一部分网络架构" class="pagebody-header">
+ &lt;strong>第一部分：网络架构&lt;/strong>
+ &lt;/h2>
+&lt;/div>
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第一章网络基础" class="pagebody-header">
+ * &lt;strong>第一章：网络基础&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* 网络拓扑结构：
+ * 点对点连接
+ * 菊花链
+ * 总线型拓扑 (常见于无线网络)
+ * 环形拓扑 (数据单向流动，速度受限于最慢节点)
+ * 星型拓扑
+ * 网状拓扑
+ * 混合拓扑 (例如星型-环形、星型-总线)
+* **OSI 参考模型**的分层结构
+* **TCP/IP 模型**的分层结构：应用层、传输层、网络层（互联网层）、链路层
+* 数据封装
+* 单播、组播和广播：
+ * **单播**：一对一通信
+ * **组播**：将消息发送到一组节点，类似于订阅列表
+ * **广播**：将消息发送到网络上的所有节点（IPv4）
+ * **任播**：将消息发送到监听同一地址的最近节点 (IPv6)
+* Go 标准库和生态系统适合编写安全可靠的网络应用
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第二章ip寻址" class="pagebody-header">
+ * &lt;strong>第二章：IP寻址&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* IPv4 地址的结构：主机 ID 和网络 ID
+* IPv4 地址的子网划分
+* IPv4 的私有地址范围
+* IPv6 地址的结构：
+ * 全球路由前缀 (GRP)
+ * 子网 ID
+ * 接口 ID
+ * 链路本地地址
+* IPv6 的任播地址
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二部分套接字级编程" class="pagebody-header">
+ &lt;strong>第二部分：套接字级编程&lt;/strong>
+ &lt;/h2>
+&lt;/div>
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第三章tcp协议" class="pagebody-header">
+ * &lt;strong>第三章：TCP协议&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* TCP 三次握手过程：SYN，SYN/ACK，ACK
+* 使用 Go 的 `net` 包创建 TCP 服务器和客户端
+* 监听 (net.Listen) 和接受连接 (net.Accept)
+* **绑定 (binding)**：操作系统独占分配端口
+* 客户端拨号连接 (net.Dial)
+* 优雅地关闭连接
+* 使用 `net.Error` 类型来检查临时错误
+* 使用 `net.OpError` 获取更多错误信息
+* 使用 `context` 包进行超时和取消操作
+* **处理临时错误和超时**
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第四章发送tcp数据" class="pagebody-header">
+ * &lt;strong>第四章：发送TCP数据&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* `net.Conn` 接口实现了 `io.ReadWriteCloser` 接口
+* 从固定大小的缓冲区读取数据
+* 使用 `bufio.Scanner` 按分隔符读取数据
+* **TLV (Type-Length-Value) 编码**：一种动态分配缓冲区大小的方法
+* 处理读取和写入数据时的错误
+* **使用 `io.Copy` 在连接之间代理数据**
+* 使用 `io.TeeReader` 和 `io.MultiWriter` 监控网络连接
+* `TCPConn` 对象：控制 Keepalive 消息、处理关闭时的挂起数据、覆盖默认的发送和接收缓冲区
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第五章不可靠的udp通信" class="pagebody-header">
+ * &lt;strong>第五章：不可靠的UDP通信&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* UDP 协议的特点：无连接，不可靠
+* UDP 数据包的结构：源端口、目标端口、数据包长度、校验和、有效负载
+* 使用 `net.ListenPacket` 创建 UDP 连接
+* 使用`ReadFrom` 和 `WriteTo` 发送和接收UDP数据包
+* **一个 UDP 连接对象可以接收来自多个发送者的数据包**
+* `net.Conn` 用于管理 UDP 通信时，只从 `net.Dial` 指定的地址读取数据
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第六章确保udp可靠性" class="pagebody-header">
+ * &lt;strong>第六章：确保UDP可靠性&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* TFTP (Trivial File Transfer Protocol) 协议用于可靠的文件传输
+* TFTP 数据包类型：读取请求、数据包、确认包、错误包
+* **使用`encoding.BinaryMarshaler` 和 `encoding.BinaryUnmarshaler` 进行二进制数据的序列化和反序列化**
+* 数据包重传和超时
+* 避免分片
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第七章unix-域套接字" class="pagebody-header">
+ * &lt;strong>第七章：Unix 域套接字&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* Unix 域套接字的三种类型：`unix` (流式)、`unixgram` (数据报式)、`unixpacket` (会话式)
+* 控制 Unix 域套接字的读写权限
+* 使用 `net.Listen` 创建 `unix` 套接字服务器
+* 使用 `net.ListenPacket` 创建 `unixgram` 套接字服务器
+* 使用 `net.Dial` 创建 `unixpacket` 套接字客户端
+* 使用 `os.Chmod` 设置套接字文件权限
+* 使用 `net.AcceptUnix` 获取 `net.UnixConn` 对象
+* 基于用户和组 ID 验证客户端
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第三部分应用级编程" class="pagebody-header">
+ &lt;strong>第三部分：应用级编程&lt;/strong>
+ &lt;/h2>
+&lt;/div>
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第八章http客户端" class="pagebody-header">
+ * &lt;strong>第八章：HTTP客户端&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* HTTP 协议：客户端发送 URL，服务器返回资源
+* **HTTP 请求**：方法（GET, POST等）、URL、头部、主体 
+* **HTTP 响应**：状态码、头部、主体 
+* 使用 `net/http` 包创建 HTTP 客户端 
+* 设置请求头
+* 使用 `multipart/form-data` 上传文件
+* `http.NewRequestWithContext` 函数
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第九章构建http服务" class="pagebody-header">
+ * &lt;strong>第九章：构建HTTP服务&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* Go HTTP 服务器的组成部分：多路复用器、中间件、处理器
+* `http.ServeMux`：请求多路复用器
+* **中间件**：在处理器之前或之后执行的函数，用于身份验证、日志记录等
+* `http.Handler` 接口
+* `http.HandlerFunc` 类型，简化处理器的定义 
+* `http.ResponseWriter`：用于写响应
+* `http.Request`：请求对象
+* 处理客户端输入时需要进行转义
+* 提供静态文件服务 
+* 使用 `http.TimeoutHandler` 设置超时
+* `Methods`处理器
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>&lt;code>html/template&lt;/code> 包用于HTML转义&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第十章caddy一个现代的web服务器" class="pagebody-header">
+ * &lt;strong>第十章：Caddy：一个现代的Web服务器&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* Caddy 的特性：自动 HTTPS、配置简单
+* Caddy 的配置方法：JSON 文件
+* **Caddy 的配置适配器**：将 TOML 等格式转换为 Caddy 的原生 JSON 格式
+* **Caddy 的中间件**：实现 `caddyhttp.MiddlewareHandler` 接口
+* 实现自定义中间件
+* 使用 Caddy 作为反向代理
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第十一章tls" class="pagebody-header">
+ * &lt;strong>第十一章：TLS&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* TLS (Transport Layer Security) 协议：用于加密网络通信
+* 使用 `crypto/tls` 包创建 TLS 连接
+* **TLS 配置**：证书、密钥、协议版本、密码套件
+* 客户端身份验证：**双向 TLS**
+* 使用 `crypto/x509` 包加载和解析证书
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第十二章命令行工具" class="pagebody-header">
+ * &lt;strong>第十二章：命令行工具&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* 使用 `flag` 包解析命令行参数
+* 使用 `os` 包读取和写入文件
+* **Protocol Buffer** (protobuf)：用于序列化结构化数据
+* **gRPC**：使用 protobuf 的远程过程调用框架
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第十三章可观察性" class="pagebody-header">
+ * &lt;strong>第十三章：可观察性&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* **日志记录**：使用 `log` 包
+* 使用 `io.MultiWriter` 将日志写入多个目标
+* **结构化日志**：使用 `go.uber.org/zap` 包
+ * Zap 的编码器配置和使用
+ * Zap 的日志轮换
+* **度量**：使用 `github.com/go-kit/kit/metrics` 包
+* 使用中间件进行广泛的事件日志记录
+* 使用 `net/http` 的 `ConnState` 字段来监控连接状态
+&lt;/code>&lt;/pre>
+
+&lt;div class="component-content pagebody component">
+ &lt;h3 id="---第十四章云" class="pagebody-header">
+ * &lt;strong>第十四章：云&lt;/strong>
+ &lt;/h3>
+&lt;/div>&lt;pre>&lt;code>* 在云上部署 Go 应用
+* **AWS Lambda**：无服务器计算平台
+* 使用 `github.com/aws/aws-lambda-go/lambda` 包
+* 从 RSS feed 获取数据
+&lt;/code>&lt;/pre></description></item><item><title>.NET in Action 第二版</title><link>https://booslip.rpcx.io/posts/dotnet-in-action-2rd/</link><pubDate>Thu, 09 Jan 2025 18:14:18 +0800</pubDate><guid>https://booslip.rpcx.io/posts/dotnet-in-action-2rd/</guid><description>&lt;p>这本书涵盖了 .NET 开发的各个方面，从基础语法、数据处理、Web 开发到测试、安全、性能和部署。通过学习这本书，可以全面掌握 .NET 开发技能，构建高质量的应用程序。&lt;/p></description></item><item><title>GRPC Microservices in Go</title><link>https://booslip.rpcx.io/posts/grpc-microservices-in-go/</link><pubDate>Thu, 09 Jan 2025 18:05:12 +0800</pubDate><guid>https://booslip.rpcx.io/posts/grpc-microservices-in-go/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章go-grpc-微服务简介" class="pagebody-header">
+ &lt;strong>第一章：Go gRPC 微服务简介&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>gRPC 的跨平台和多语言兼容性&lt;/strong>：gRPC 工具和库与多种平台和语言兼容，包括 Go、Java、Python、Ruby、JavaScript 和 C# 等。Protobuf 二进制线格式和代码生成功能使开发者能够构建高性能的跨平台应用程序。&lt;/li>
+&lt;li>&lt;strong>gRPC 的优势&lt;/strong>：gRPC 越来越受欢迎，因为它能够快速生成客户端存根，为不同语言的服务提供 SDK。开发者只需定义业务对象和方法，gRPC 就可以生成特定语言的实现，使得服务器端和客户端可以使用不同的开发语言进行通信。&lt;/li>
+&lt;li>&lt;strong>容错能力&lt;/strong>：容错是指系统在发生故障时仍能继续运行的能力。&lt;strong>幂等操作是实现容错环境的关键&lt;/strong>，因为它可以确保即使多次调用同一操作，资源的状态也不会发生改变。此外，容错还包括限流、熔断和故障注入等主题，这些将在第六章详细介绍。&lt;/li>
+&lt;li>&lt;strong>多语言开发环境&lt;/strong>：gRPC 非常适合多语言开发环境，因为可以使用 Python 客户端访问用 Java 编写的 Payment 服务，客户端存根生成非常方便。&lt;/li>
+&lt;li>&lt;strong>微服务验证机制&lt;/strong>：当服务定义发生更改时，客户端的测试会失败，这是一种用于验证微服务的有效机制。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二章grpc-与微服务" class="pagebody-header">
+ &lt;strong>第二章：gRPC 与微服务&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>微服务架构的优势&lt;/strong>：单体架构在产品开发的初期阶段很有帮助，但在评估产品的可扩展性、开发和部署问题后，以及熟悉业务能力和服务上下文后，切换到微服务架构是一种最佳实践。&lt;/li>
+&lt;li>&lt;strong>扩展立方体（Scale Cube）&lt;/strong>：扩展立方体是一个三维可扩展模型，包括 X 轴扩展（运行多个相同应用副本）、Y 轴扩展（根据功能分解服务）和 Z 轴扩展（根据请求属性路由请求）。&lt;/li>
+&lt;li>&lt;strong>异步通信&lt;/strong>：发布/订阅（Pub/Sub）或命令通道机制是异步通信的示例，而请求/响应风格（如 gRPC）是同步通信的示例。&lt;/li>
+&lt;li>&lt;strong>Saga 模式&lt;/strong>：基于编排（Choreography）和协调器（Orchestrator）的 Saga 模式提供了分布式环境中的数据一致性。&lt;/li>
+&lt;li>&lt;strong>gRPC 的应用&lt;/strong>：gRPC 是一种现代、轻量级的通信协议，也是一个高性能的 RPC 框架，它通过协议缓冲区高效地连接微服务环境中的服务，并内置支持负载均衡、跟踪、健康检查和身份验证。&lt;/li>
+&lt;li>&lt;strong>.proto 文件&lt;/strong>：使用 Protocol Buffers 定义消息和服务函数，并通过协议缓冲区编译器（protoc）生成服务器和客户端存根。&lt;/li>
+&lt;li>&lt;strong>gRPC 的工作流程&lt;/strong>：定义 .proto 文件，生成客户端和服务器存根，实现服务器端和客户端的业务逻辑，最后运行服务和客户端。&lt;/li>
+&lt;li>&lt;strong>流式处理&lt;/strong>：gRPC 支持客户端和服务器端的流式处理，允许客户端连续发送请求，服务器可以返回一个对象流。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第三章开始使用-grpc-和-golang" class="pagebody-header">
+ &lt;strong>第三章：开始使用 gRPC 和 Golang&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>Protocol Buffers&lt;/strong>：Protocol Buffers 允许序列化结构化数据以便通过网络传输，并定义服务函数以生成特定语言的源代码。&lt;/li>
+&lt;li>&lt;strong>.proto 文件&lt;/strong>：.proto 文件是配置文件的形式，包含消息和服务函数的定义，也包含协议的版本信息（例如 proto3）。&lt;/li>
+&lt;li>&lt;strong>消息类型定义&lt;/strong>：消息字段可以是单数（最多一个）、重复（多个值，包括零）或者保留的。字段类型可以是标量类型（如字符串和整数）、枚举或其他嵌入消息类型。&lt;/li>
+&lt;li>&lt;strong>消息编码&lt;/strong>：协议缓冲区将消息转换为二进制格式进行传输，包括元数据部分和数据部分。&lt;/li>
+&lt;li>&lt;strong>生成存根&lt;/strong>：protoc 工具可以接受多种参数来生成特定语言的源代码。&lt;/li>
+&lt;li>&lt;strong>维护 .proto 文件&lt;/strong>：维护 .proto 文件需要考虑版本控制和向后/向前兼容性，通常会将 .proto 文件保存在单独的仓库中。&lt;/li>
+&lt;li>&lt;strong>在 CI/CD 管道中添加存根生成过程&lt;/strong>：使用 GitHub Actions 可以自动化存根的生成过程。&lt;/li>
+&lt;li>&lt;strong>Go 代码生成&lt;/strong>：使用 protoc 生成 Go 源代码，包括 go_package 选项和源代码相对路径。&lt;/li>
+&lt;li>&lt;strong>消息和服务的定义&lt;/strong>: 了解如何在 .proto 文件中定义消息（message）类型，包括字段规则、字段类型以及保留字段。同时，也包含了服务（service）的定义，以及如何使用 rpc 调用定义服务函数。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第四章微服务项目设置" class="pagebody-header">
+ &lt;strong>第四章：微服务项目设置&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>六边形架构&lt;/strong>：六边形架构通过端口允许外部参与者使用、实现和编排业务逻辑。&lt;/li>
+&lt;li>&lt;strong>项目文件夹&lt;/strong>：一个典型的 Go 项目包含以下文件夹：application（包含业务逻辑），cmd（包含入口点），config（包含配置），internal/adapters（包含适配器），internal/ports（包含端口），以及 domain （包含核心业务实体）。&lt;/li>
+&lt;li>&lt;strong>应用核心的实现&lt;/strong>：应用核心是业务逻辑的组合，包括领域模型和 API，外层依赖于内层，这使得先实现应用核心，再实现外层依赖变得更容易。&lt;/li>
+&lt;li>&lt;strong>端口和适配器&lt;/strong>：端口是定义应用核心与外部世界交互的接口，适配器是端口的具体实现。&lt;/li>
+&lt;li>&lt;strong>依赖注入&lt;/strong>：通过依赖注入来组合端口和适配器，然后运行应用。&lt;/li>
+&lt;li>&lt;strong>配置管理&lt;/strong>：使用环境变量来分离生产和非生产环境，并读取数据库连接 URL 和应用端口。&lt;/li>
+&lt;li>&lt;strong>使用 grpcurl 测试 gRPC 端点&lt;/strong>：使用 grpcurl 工具可以发送请求并测试 gRPC 服务。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第五章服务间通信" class="pagebody-header">
+ &lt;strong>第五章：服务间通信&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>gRPC 存根&lt;/strong>：gRPC 存根用于在服务之间进行通信，它是由 .proto 文件生成的 Go 源代码。&lt;/li>
+&lt;li>&lt;strong>依赖模块和实现端口和适配器&lt;/strong>：解释了如何在 Order 服务中依赖 Payment 服务，并实现相应的端口和适配器。&lt;/li>
+&lt;li>&lt;strong>gRPC 客户端配置&lt;/strong>：使用 &lt;code>grpc.WithTransportCredentials(insecure.NewCredentials())&lt;/code> 来禁用 TLS 握手，使用 &lt;code>payment.NewPaymentClient(conn)&lt;/code> 来初始化 payment 存根实例。&lt;/li>
+&lt;li>&lt;strong>错误处理&lt;/strong>：gRPC 使用预定义的状态码来表示不同的错误情况，并提供了一种结构化的方式来处理错误。&lt;/li>
+&lt;li>&lt;strong>错误详情&lt;/strong>：通过 &lt;code>errdetails.BadRequest_FieldViolation&lt;/code> 和 &lt;code>errdetails.BadRequest&lt;/code> 可以传递详细的错误信息，包括字段和描述。&lt;/li>
+&lt;li>&lt;strong>状态码&lt;/strong>：详细列出了 gRPC 中常用的状态码，例如 OK，CANCELLED, INVALID_ARGUMENT, ALREADY_EXISTS, PERMISSION_DENIED, RESOURCE_EXHAUSTED 等，这些状态码用于在服务间传递错误信息。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第六章弹性通信" class="pagebody-header">
+ &lt;strong>第六章：弹性通信&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>弹性模式&lt;/strong>：弹性模式是用于处理分布式系统中网络故障的模式，包括超时、重试和熔断器。&lt;/li>
+&lt;li>&lt;strong>超时模式&lt;/strong>：使用 &lt;code>context.WithTimeout&lt;/code> 或 &lt;code>context.WithDeadline&lt;/code> 来设置请求超时，防止长时间等待。&lt;/li>
+&lt;li>&lt;strong>重试模式&lt;/strong>：使用 &lt;code>grpc_retry&lt;/code> 中间件来自动重试失败的请求，并使用 &lt;code>WithCodes&lt;/code>、&lt;code>WithMax&lt;/code> 和 &lt;code>WithBackoff&lt;/code> 等配置来控制重试行为。&lt;/li>
+&lt;li>&lt;strong>熔断器模式&lt;/strong>：熔断器模式可以防止级联故障，并在服务恢复后自动重置。使用 &lt;code>gobreaker&lt;/code> 包来实现熔断器，通过 &lt;code>MaxRequests&lt;/code>、&lt;code>ReadyToTrip&lt;/code> 和 &lt;code>OnStateChange&lt;/code> 等配置来控制熔断器的行为。&lt;/li>
+&lt;li>&lt;strong>gRPC 错误模型&lt;/strong>：gRPC 使用 &lt;code>status&lt;/code> 包来处理错误，包括 Code、Status 和 Message 三个主要字段，以及 &lt;code>ErrorDetails&lt;/code> 部分来包含详细的错误列表。&lt;/li>
+&lt;li>&lt;strong>TLS 配置&lt;/strong>：使用 TLS 配置来保护服务间的通信，包括证书生成和 gRPC TLS 凭证的使用。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第七章测试微服务" class="pagebody-header">
+ &lt;strong>第七章：测试微服务&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>测试金字塔&lt;/strong>：测试金字塔将软件测试分为单元测试、集成测试和端到端测试三个类别，单元测试占比最大，端到端测试占比最小。&lt;/li>
+&lt;li>&lt;strong>单元测试&lt;/strong>：单元测试用于验证软件的特定单元，例如类或函数。测试工作流程包括设置、调用 SUT（被测系统）、验证和拆卸。&lt;/li>
+&lt;li>&lt;strong>系统测试（SUT）&lt;/strong>：SUT 可以是类或整个应用程序，测试套件用于验证 SUT 的行为。&lt;/li>
+&lt;li>&lt;strong>Mock&lt;/strong>：使用 Mock 来模拟依赖项，从而快速验证系统行为。使用 testify/mock 或 mockery 来生成 Mock。&lt;/li>
+&lt;li>&lt;strong>集成测试&lt;/strong>：使用 Testcontainers 来初始化数据库等外部依赖项，并使用 Go 的测试框架来验证集成。&lt;/li>
+&lt;li>&lt;strong>端到端测试&lt;/strong>：使用 Docker Compose 来定义和运行应用程序堆栈，并通过测试来验证整个流程。&lt;/li>
+&lt;li>&lt;strong>测试覆盖率&lt;/strong>: 使用 &lt;code>go test -cover&lt;/code> 命令来查看测试覆盖率，并使用 &lt;code>-coverprofile&lt;/code> 来生成覆盖率报告。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第八章部署" class="pagebody-header">
+ &lt;strong>第八章：部署&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>Kubernetes&lt;/strong>：Kubernetes 是一个用于自动化部署、扩展和管理容器化应用程序的开源平台。&lt;/li>
+&lt;li>&lt;strong>Kubernetes 的核心组件&lt;/strong>：包括 API 服务器、调度器、控制器管理器、etcd 和 kubelet 等。&lt;/li>
+&lt;li>&lt;strong>Kubernetes 部署&lt;/strong>：通过 Deployment 资源来管理 Pod 的部署和更新。&lt;/li>
+&lt;li>&lt;strong>Service&lt;/strong>：使用 Service 资源来暴露 Pod 作为内部或公共端点。&lt;/li>
+&lt;li>&lt;strong>部署策略&lt;/strong>：包括 RollingUpdate、Blue-Green 和 Canary 等部署策略。&lt;/li>
+&lt;li>&lt;strong>证书管理&lt;/strong>：介绍如何在 Kubernetes 环境中进行证书管理，包括 ClusterIssuer 和 Certificate 的使用。&lt;/li>
+&lt;li>&lt;strong>使用 kubectl 进行部署&lt;/strong>: 详细介绍了如何使用 kubectl 命令来部署 Kubernetes 资源，包括 Deployment 和 Service。&lt;/li>
+&lt;li>&lt;strong>GitOps&lt;/strong>：使用 ArgoCD 和 FluxCD 等工具来自动化部署过程。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第九章可观测性" class="pagebody-header">
+ &lt;strong>第九章：可观测性&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>可观测性&lt;/strong>：可观测性是跟踪和分析分布式系统中问题的根本原因的关键，它通过跟踪、指标和日志来帮助我们了解系统状态。&lt;/li>
+&lt;li>&lt;strong>跟踪（Traces）&lt;/strong>：跟踪是记录跨多个服务的请求旅程，包括操作和跨度（spans）。&lt;/li>
+&lt;li>&lt;strong>指标（Metrics）&lt;/strong>：指标是用于量化系统性能的度量，例如延迟、请求数和错误率。&lt;/li>
+&lt;li>&lt;strong>服务级别目标 (SLO)&lt;/strong>：定义了服务应达到的目标，例如正常运行时间或响应延迟。&lt;/li>
+&lt;li>&lt;strong>日志（Logs）&lt;/strong>：日志是应用程序产生的消息，可以帮助我们理解发生了什么 。&lt;/li>
+&lt;li>&lt;strong>OpenTelemetry&lt;/strong>：OpenTelemetry 是一组 API、SDK 和工具，用于收集和发送跟踪、指标和日志数据。&lt;/li>
+&lt;li>&lt;strong>Jaeger&lt;/strong>：Jaeger 是一个用于分布式跟踪的开源系统。&lt;/li>
+&lt;li>&lt;strong>Prometheus&lt;/strong>：Prometheus 是一个用于收集和存储指标的开源系统。&lt;/li>
+&lt;li>&lt;strong>Fluent Bit&lt;/strong>：Fluent Bit 是一个轻量级的日志收集器，用于将日志转发到 Elasticsearch。&lt;/li>
+&lt;li>&lt;strong>Elasticsearch&lt;/strong>：Elasticsearch 是一个用于存储和搜索日志的开源系统 。&lt;/li>
+&lt;li>&lt;strong>Kibana&lt;/strong>：Kibana 是一个用于可视化日志的开源工具 。&lt;/li>
+&lt;li>&lt;strong>整合可观察性工具&lt;/strong>: 详细介绍了如何将 OpenTelemetry、Jaeger、Prometheus、Fluent Bit、Elasticsearch 和 Kibana 集成在一起，以建立一个完整的可观察性堆栈。&lt;/li>
+&lt;/ul></description></item><item><title>Tidy First</title><link>https://booslip.rpcx.io/posts/tidy-first/</link><pubDate>Wed, 01 Jan 2025 23:33:11 +0800</pubDate><guid>https://booslip.rpcx.io/posts/tidy-first/</guid><description>&lt;p>这本书的作者是谁？肯特·贝克 (Kent Beck) 。肯特·贝克 (Kent Beck) 是谁？
+他是最早研究软件开发的模式和重构的人之一，软件工程领域泰斗，敏捷开发的开创者之一，更是极限编程和测试驱动开发的创始人，同时还是JUnit 的作者，&lt;/p></description></item><item><title>The Rules of Programming</title><link>https://booslip.rpcx.io/posts/the-rules-of-programming/</link><pubDate>Wed, 01 Jan 2025 22:58:50 +0800</pubDate><guid>https://booslip.rpcx.io/posts/the-rules-of-programming/</guid><description>&lt;p>这份规则摘自克里斯·齐默曼的《编程规则：如何编写更好的代码》一书。书中作者结合其在微软和Sucker Punch游戏公司的编程团队管理经验，总结出一系列编程原则，旨在帮助程序员编写更简洁、易于测试和维护的代码。这些原则涵盖了代码简洁性、算法选择、测试策略、团队协作、代码审查以及代码重构等多个方面，并通过具体的代码示例和案例分析进行阐述。 书中还讨论了如何处理代码复杂性，以及如何平衡渐进式改进和彻底重构之间的关系。&lt;/p></description></item><item><title>Code Like a Pro in Rust</title><link>https://booslip.rpcx.io/posts/code-like-a-pro-in-rust/</link><pubDate>Wed, 01 Jan 2025 10:47:55 +0800</pubDate><guid>https://booslip.rpcx.io/posts/code-like-a-pro-in-rust/</guid><description>&lt;p>本书对 Rust 初学者合适，没有介绍高深的Rust概念。&lt;/p>
+&lt;p>好的，这是一份按照章节对《Code Like a Pro in Rust》这本书的总结和摘要，着重于关键概念和信息，以中文呈现：&lt;/p></description></item><item><title>Write Powerful Rust Macros</title><link>https://booslip.rpcx.io/posts/write-powerful-rust-macros/</link><pubDate>Wed, 01 Jan 2025 10:30:41 +0800</pubDate><guid>https://booslip.rpcx.io/posts/write-powerful-rust-macros/</guid><description>&lt;p>这本书《Write Powerful Rust Macros》旨在教导读者如何使用 Rust 的宏进行元编程。本书从元编程的基础概念讲起，逐步深入到各种宏的类型和实际应用，并通过大量的示例和练习，帮助读者掌握编写强大 Rust 宏的技能。&lt;/p></description></item><item><title>Learn Concurrent Programming With Go</title><link>https://booslip.rpcx.io/posts/learn-concurrent-programming-with-go/</link><pubDate>Wed, 01 Jan 2025 10:09:38 +0800</pubDate><guid>https://booslip.rpcx.io/posts/learn-concurrent-programming-with-go/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>第一章：步入并发编程&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>并发（Concurrency）&lt;/strong> 是一种程序代码的属性，它将指令分组为独立的任务，并规划任务之间的边界和同步点。并发存在于我们日常生活和工作中，例如多人同时在线购物或汽车行驶。&lt;/li>
+&lt;li>&lt;strong>并行（Parallelism）&lt;/strong> 是程序执行的属性，它指同时执行多个任务。并行是并发的子集，只有并发程序才能并行执行。&lt;/li>
+&lt;li>&lt;strong>Go 语言&lt;/strong> 在设计时就考虑了高性能的并发，因此是学习并发编程的理想选择。Go 使用 &lt;strong>goroutine&lt;/strong> 作为基本的并发执行单元，它是一种轻量级的用户级线程，由 Go 的运行时管理。&lt;/li>
+&lt;li>Go 提供了两种并发模型：&lt;strong>通信顺序进程（CSP）&lt;/strong> 模型和传统的 &lt;strong>内存共享&lt;/strong> 模型。CSP 模型通过消息传递进行通信，而内存共享模型使用互斥锁和条件变量等原语进行同步。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二章：处理线程&lt;/strong>&lt;/p></description></item><item><title>Learn Rust in a Month of Lunches</title><link>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</link><pubDate>Wed, 01 Jan 2025 09:34:21 +0800</pubDate><guid>https://booslip.rpcx.io/posts/learn-rust-in-a-month-of-lunches/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>第一章：Rust 基础入门&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>核心概念：&lt;/strong> 本章主要介绍了 Rust 的基本语法和概念，包括变量声明、代码块、打印输出、类型转换和字符串。&lt;/li>
+&lt;li>&lt;strong>变量与代码块：&lt;/strong>
+&lt;ul>
+&lt;li>使用 &lt;code>let&lt;/code> 关键字声明变量，代码块用 &lt;code>{}&lt;/code> 表示。变量的作用域（lifetime）限制在代码块内部。&lt;/li>
+&lt;li>&lt;strong>Shadowing&lt;/strong> (遮蔽) 是指用新的 &lt;code>let&lt;/code> 绑定同名变量，使之前的变量失效。&lt;/li>
+&lt;li>变量的类型通常由 Rust 自动推断，但可以使用 &lt;code>as&lt;/code> 关键字进行显式类型转换。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>打印输出:&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>println!&lt;/code> 宏用于打印输出，&lt;code>{}&lt;/code> 用来捕获变量的值。&lt;code>{:?}&lt;/code> 用于调试输出，&lt;code>{:#?}&lt;/code> 用于更美观的调试输出，可以分行显示结构体等复杂类型的内容。&lt;/li>
+&lt;li>&lt;code>print!&lt;/code> 宏与 &lt;code>println!&lt;/code> 类似，但不添加换行符。&lt;/li>
+&lt;li>可以使用 &lt;code>r#&amp;quot;&amp;quot;#&lt;/code> 来创建原始字符串，避免转义字符的麻烦。&lt;/li>
+&lt;li>在字符串前加 &lt;code>b&lt;/code> 可以打印字符串的字节表示。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>字符串类型：&lt;/strong> &lt;code>&amp;amp;str&lt;/code> 是一种字符串切片类型，后续章节会详细介绍。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二章：内存、变量与所有权&lt;/strong>&lt;/p></description></item><item><title>System Programming Essentials With Go</title><link>https://booslip.rpcx.io/posts/system-programming-essentials-with-go/</link><pubDate>Sun, 29 Dec 2024 17:24:00 +0800</pubDate><guid>https://booslip.rpcx.io/posts/system-programming-essentials-with-go/</guid><description>&lt;p>本书主要介绍了使用Go语言进行系统级编程的知识。书中涵盖了并发编程、内存管理、性能分析、系统调用、网络编程、以及与硬件交互等多个方面。此外，还包含了命令行工具的开发、日志记录、监控和追踪等内容，并以一个分布式缓存的项目作为案例，展示了如何将所学知识应用于实践。最后，书中还讨论了高效编码技巧和一些常见问题的避免方法。&lt;/p></description></item><item><title>Go Recipes for Developers</title><link>https://booslip.rpcx.io/posts/go-recipes-for-developers/</link><pubDate>Sun, 29 Dec 2024 17:12:00 +0800</pubDate><guid>https://booslip.rpcx.io/posts/go-recipes-for-developers/</guid><description>&lt;p>本书涵盖了Go语言编程的多个方面，包括项目组织、日期时间处理、数组切片和映射的使用、JSON处理、进程管理、网络编程、流式输入输出、数据库交互、日志记录、测试和性能分析等。书中以“食谱”的形式，为开发者提供了大量实用代码示例和最佳实践，帮助解决实际编程问题。作者Burak Serdar拥有超过30年的软件工程经验，审稿人Dylan Meeus也具备丰富的编程经验，确保了书中内容的权威性和实用性。&lt;/p></description></item><item><title>Patterns of Distributed Systems</title><link>https://booslip.rpcx.io/posts/patterns-of-distributed-systems/</link><pubDate>Sun, 29 Dec 2024 16:48:43 +0800</pubDate><guid>https://booslip.rpcx.io/posts/patterns-of-distributed-systems/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一部分导论与概述" class="pagebody-header">
+ 第一部分：导论与概述
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>导论&lt;/strong>：本书的核心概念是将复杂的分布式系统抽象成可复用的模式。通过命名组件、描述行为和交互方式，构建了一个分布式系统的模式语言，使系统可以被视为可组合的“乐高积木”。 这有助于避免在讨论分布式系统时因术语歧义而产生的误解。&lt;/li>
+&lt;li>&lt;strong>概述&lt;/strong>：分布式系统的基本构建块包括数据分区和复制。本书首先关注数据复制，然后介绍分区。一个简单的示例数据记录被复制到多个节点，展示了分布式系统中数据一致性的挑战。例如，如果一个节点在更新数据过程中崩溃，会导致数据不一致。 使用&lt;strong>领导者（Leader）模式&lt;/strong>可以解决这个问题，由一个领导者节点处理所有更新请求。 当领导者失效时，需要通过&lt;strong>心跳（Heartbeat）机制&lt;/strong>来检测，并选举新的领导者。 &lt;strong>高水位标记（High-Water Mark）&lt;/strong> 用于确保所有节点在领导者切换后保持数据一致性。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二部分数据复制模式" class="pagebody-header">
+ 第二部分：数据复制模式
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>写前日志（Write-Ahead Log, WAL）&lt;/strong>：&lt;/p></description></item><item><title>Idiomatic Rust</title><link>https://booslip.rpcx.io/posts/idiomatic-rust/</link><pubDate>Sat, 28 Dec 2024 19:09:04 +0800</pubDate><guid>https://booslip.rpcx.io/posts/idiomatic-rust/</guid><description>&lt;p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。&lt;/p></description></item><item><title>Async Rust</title><link>https://booslip.rpcx.io/posts/async-rust/</link><pubDate>Sat, 28 Dec 2024 18:58:34 +0800</pubDate><guid>https://booslip.rpcx.io/posts/async-rust/</guid><description>&lt;p>好的，我将按照您的要求，对每个章节的内容进行总结，并尽可能地包含关键代码，使其内容详实且易于理解。&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章异步简介" class="pagebody-header">
+ 第一章：异步简介
+ &lt;/h2>
+&lt;/div>&lt;p>本章主要介绍了异步编程的概念以及在Rust中的应用。&lt;/p></description></item><item><title>Effective Rust</title><link>https://booslip.rpcx.io/posts/effective-rust/</link><pubDate>Sat, 28 Dec 2024 18:42:32 +0800</pubDate><guid>https://booslip.rpcx.io/posts/effective-rust/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章类型types" class="pagebody-header">
+ 第一章：类型（Types）
+ &lt;/h2>
+&lt;/div>&lt;p>本章主要讨论 Rust 的类型系统及其在表达数据结构和行为方面的应用。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>使用类型系统表达数据结构&lt;/strong>：
+&lt;ul>
+&lt;li>强调 Rust 的类型系统能够帮助开发者清晰地表达数据结构，提高代码的可读性和可维护性。&lt;/li>
+&lt;li>介绍了 &lt;strong>元组结构体 (tuple structs)&lt;/strong>，其字段通过数字索引访问，例如 &lt;code>m.0&lt;/code>。&lt;/li>
+&lt;li>深入探讨了 &lt;strong>枚举 (enums)&lt;/strong>，它是 Rust 类型系统的核心。枚举可以定义一组互斥的值，并可以附带数值。
+&lt;div class="component-content pagebody component code">
+ 
+ 
+ 
+ &lt;div class="">&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">enum&lt;/span> &lt;span style="color:#a6e22e">HttpResultCode&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Ok &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">200&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> NotFound &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">404&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Teapot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">418&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
+ 
+&lt;/div>&lt;/li>
+&lt;li>使用枚举可以增强代码的可读性和类型安全性，避免使用布尔值参数时可能出现的混淆。例如，使用 &lt;code>Sides::Both&lt;/code> 和 &lt;code>Output::BlackAndWhite&lt;/code> 比使用 &lt;code>true&lt;/code> 和 &lt;code>false&lt;/code> 更清晰易懂。&lt;/li>
+&lt;li>&lt;strong>match 表达式&lt;/strong> 用于处理枚举的不同变体，Rust 编译器会强制检查所有变体是否都被覆盖，从而避免遗漏情况。&lt;/li>
+&lt;li>如果枚举仅仅是一个 C 风格的数值列表，可以使用 &lt;code>non_exhaustive&lt;/code> 属性来避免添加新变体时的破坏性变更。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>使用类型系统表达通用行为&lt;/strong>：
+&lt;ul>
+&lt;li>函数 (functions) 可以通过 &lt;code>fn&lt;/code> 关键字定义，并可以指定返回值类型。函数也可以仅用于副作用，没有返回值。
+&lt;div class="component-content pagebody component code">
+ 
+ 
+ 
+ &lt;div class="">&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">div&lt;/span>(x: &lt;span style="color:#66d9ef">f64&lt;/span>, y: &lt;span style="color:#66d9ef">f64&lt;/span>) -&amp;gt; &lt;span style="color:#66d9ef">f64&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> y &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0.0&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">f64&lt;/span>::&lt;span style="color:#66d9ef">NAN&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">/&lt;/span> y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">show&lt;/span>(x: &lt;span style="color:#66d9ef">f64&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> println!(&lt;span style="color:#e6db74">&amp;#34;x = &lt;/span>&lt;span style="color:#e6db74">{x}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
+ 
+&lt;/div>&lt;/li>
+&lt;li>&lt;strong>方法 (methods)&lt;/strong> 与特定的数据结构关联，通过 &lt;code>self&lt;/code> 引用该数据结构。方法可以修改、读取或消耗数据结构. 方法可以被添加到 &lt;code>enum&lt;/code> 类型和 &lt;code>struct&lt;/code> 类型。
+&lt;div class="component-content pagebody component code">
+ 
+ 
+ 
+ &lt;div class="">&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">enum&lt;/span> &lt;span style="color:#a6e22e">Shape&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Rectangle { width: &lt;span style="color:#66d9ef">f64&lt;/span>, height: &lt;span style="color:#66d9ef">f64&lt;/span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Circle { radius: &lt;span style="color:#66d9ef">f64&lt;/span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span> Shape {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pub&lt;/span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">area&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) -&amp;gt; &lt;span style="color:#66d9ef">f64&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">match&lt;/span> self {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Shape::Rectangle { width, height } &lt;span style="color:#f92672">=&amp;gt;&lt;/span> width &lt;span style="color:#f92672">*&lt;/span> height,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Shape::Circle { radius } &lt;span style="color:#f92672">=&amp;gt;&lt;/span> std::&lt;span style="color:#66d9ef">f64&lt;/span>::consts::&lt;span style="color:#66d9ef">PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> radius &lt;span style="color:#f92672">*&lt;/span> radius,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
+ 
+&lt;/div>&lt;/li>
+&lt;li>&lt;strong>函数指针 (function pointers)&lt;/strong> 可以作为参数传递，允许代码在运行时改变行为。函数指针类型实现了 &lt;code>Copy&lt;/code> 和 &lt;code>Eq&lt;/code> 等 trait. 函数的名称需要显式转换为 &lt;code>fn&lt;/code> 类型.&lt;/li>
+&lt;li>&lt;strong>闭包 (closures)&lt;/strong> 是一种匿名函数，可以捕获其所在环境中的变量。闭包通过 &lt;code>FnOnce&lt;/code>、&lt;code>FnMut&lt;/code> 和 &lt;code>Fn&lt;/code> 等 trait 来表达不同的捕获行为. 使用 &lt;strong>最通用的 &lt;code>Fn*&lt;/code> trait&lt;/strong> 可以为调用者提供最大的灵活性.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优先使用 &lt;code>Option&lt;/code> 和 &lt;code>Result&lt;/code> 的转换方法&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;code>Option&amp;lt;T&amp;gt;&lt;/code> 用于表示可能存在或不存在的值，而 &lt;code>Result&amp;lt;T, E&amp;gt;&lt;/code> 用于表示可能成功或失败的操作。&lt;/li>
+&lt;li>标准库为 &lt;code>Option&lt;/code> 和 &lt;code>Result&lt;/code> 提供了多种转换方法，以避免显式使用 &lt;code>match&lt;/code> 表达式，从而使代码更简洁。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>优先使用惯用的错误类型&lt;/strong>：
+&lt;ul>
+&lt;li>当函数可能产生多种不同类型的错误时，可以使用枚举 (enum) 来统一表示。&lt;/li>
+&lt;li>&lt;code>From&lt;/code> trait 可以实现不同错误类型之间的自动转换，配合 &lt;code>?&lt;/code> 操作符，可以简化错误处理.&lt;/li>
+&lt;li>可以使用 &lt;code>thiserror&lt;/code> crate 来简化错误类型定义。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>理解类型转换&lt;/strong>：
+&lt;ul>
+&lt;li>Rust 中的类型转换通过 &lt;code>From&lt;/code> 和 &lt;code>Into&lt;/code> trait 实现。如果类型 &lt;code>U&lt;/code> 实现了 &lt;code>From&amp;lt;T&amp;gt;&lt;/code>，那么类型 &lt;code>T&lt;/code> 会自动实现 &lt;code>Into&amp;lt;U&amp;gt;&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>Coercion (强制转换)&lt;/strong> 是一种自动类型转换机制，可以发生在某些情况下，例如：数组到切片、具体类型到 trait 对象、较长的生命周期到较短的生命周期。用户定义的类型可以通过实现 &lt;code>Deref&lt;/code> 和 &lt;code>DerefMut&lt;/code> trait 来影响 coercion 行为。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>拥抱 newtype 模式&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>newtype 模式&lt;/strong> 是指创建一个包含单个字段的元组结构体，可以为现有类型赋予新的语义，并解决一些类型安全问题。&lt;/li>
+&lt;li>例如，可以使用 newtype 模式来避免单位转换错误。&lt;/li>
+&lt;li>newtype 模式也可以用于绕过孤儿规则 (orphan rule)，为外部类型实现外部 trait。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>使用 Builder 模式处理复杂类型&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>Builder 模式&lt;/strong> 可以简化复杂类型的构造过程，允许用户链式调用 setter 方法来设置字段值。&lt;/li>
+&lt;li>builder 可以用于创建多个实例，并且可以克隆模板。&lt;/li>
+&lt;li>可以使用宏 (macros) 或现有的 crate（如 &lt;code>derive_builder&lt;/code>）来减少 builder 模式的样板代码。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>熟悉引用和指针类型&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>引用 (references)&lt;/strong> 是一种不拥有数据的指针，分为可变引用 (&lt;code>&amp;amp;mut T&lt;/code>) 和不可变引用 (&lt;code>&amp;amp;T&lt;/code>)。&lt;/li>
+&lt;li>&lt;strong>切片 (slices)&lt;/strong> 可以引用数组的一部分。&lt;/li>
+&lt;li>&lt;strong>Vec&lt;!-- raw HTML omitted -->&lt;/strong> 是一种动态数组，可以增长和缩小。&lt;/li>
+&lt;li>&lt;strong>Trait 对象&lt;/strong> 是指向实现了特定 trait 的具体类型的指针，通过虚表 (vtable) 实现动态分发。&lt;/li>
+&lt;li>&lt;code>Deref&lt;/code> 和 &lt;code>DerefMut&lt;/code> trait 用于智能指针类型，允许像普通引用一样访问它们指向的数据。&lt;/li>
+&lt;li>&lt;code>AsRef&lt;/code> 和 &lt;code>AsMut&lt;/code> trait 用于类型之间的引用转换。&lt;/li>
+&lt;li>&lt;code>Borrow&lt;/code> 和 &lt;code>BorrowMut&lt;/code> trait 用于处理引用和被移动的值。&lt;/li>
+&lt;li>&lt;code>Cow&lt;/code> 类型可以持有拥有的数据或借用的数据的引用。&lt;/li>
+&lt;li>&lt;code>Rc&amp;lt;T&amp;gt;&lt;/code> 用于在单线程环境中共享所有权。&lt;code>Weak&amp;lt;T&amp;gt;&lt;/code> 是 &lt;code>Rc&amp;lt;T&amp;gt;&lt;/code> 的弱引用。&lt;/li>
+&lt;li>&lt;code>Arc&amp;lt;T&amp;gt;&lt;/code> 是 &lt;code>Rc&amp;lt;T&amp;gt;&lt;/code> 的线程安全版本，使用原子计数器。&lt;/li>
+&lt;li>&lt;code>Mutex&amp;lt;T&amp;gt;&lt;/code> 用于在多线程环境中保护可变数据。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>考虑使用迭代器转换而不是显式循环&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;strong>迭代器 (iterators)&lt;/strong> 提供了一种处理集合的便捷方式，避免显式循环。&lt;/li>
+&lt;li>迭代器转换方法可以链式调用，实现复杂的数据处理操作。例如 &lt;code>filter&lt;/code>, &lt;code>take&lt;/code>, &lt;code>map&lt;/code>, &lt;code>sum&lt;/code>.&lt;/li>
+&lt;li>&lt;code>iter()&lt;/code> 方法用于创建不可变迭代器，&lt;code>iter_mut()&lt;/code> 方法用于创建可变迭代器.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第二章trait" class="pagebody-header">
+ 第二章：Trait
+ &lt;/h2>
+&lt;/div>&lt;p>本章主要介绍 Rust 中的 trait 以及一些常用的标准 trait。&lt;/p></description></item><item><title>Rust Atomics and Locks</title><link>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</link><pubDate>Sat, 28 Dec 2024 12:43:47 +0800</pubDate><guid>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</guid><description>&lt;p>&lt;strong>前言&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>本书作者 Mara Bos 在 Rust 标准库团队工作，并有多年并发实时系统开发经验。&lt;/li>
+&lt;li>本书的重点是 Rust 中 &lt;strong>底层的并发&lt;/strong> 实现，而不是高级的抽象。&lt;/li>
+&lt;li>本书适合那些对并发编程的底层机制感兴趣的读者，例如原子操作、锁、内存排序等.&lt;/li>
+&lt;li>本书通过从零开始构建各种并发原语，来深入理解其工作原理.&lt;/li>
+&lt;li>本书的写作灵感来源于 Rust 社区关于并发的讨论，作者希望通过实践来深入理解软件安全特性.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>目录&lt;/strong>&lt;/p></description></item><item><title>Command Line Rust</title><link>https://booslip.rpcx.io/posts/command-line-rust/</link><pubDate>Sat, 28 Dec 2024 10:14:48 +0800</pubDate><guid>https://booslip.rpcx.io/posts/command-line-rust/</guid><description>&lt;p>书中配套代码：&lt;a href="https://github.com/kyclark/command-line-rust">kyclark/command-line-rust&lt;/a>&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="前言" class="pagebody-header">
+ 前言
+ &lt;/h2>
+&lt;/div>&lt;p>本书作者在前言中分享了他学习编程的经验，强调了&lt;strong>实践的重要性&lt;/strong>。作者认为，仅仅阅读参考书籍是不足以掌握一门编程语言的，需要通过实际编写程序来应用所学知识。作者还提到，&lt;strong>学习如何学习一门语言&lt;/strong>是程序员最重要的技能。Rust 语言在语法上与 C 语言类似，例如 for 循环、分号结尾的语句和用花括号表示的代码块。Rust 通过 &lt;strong>borrow checker&lt;/strong> 来保证内存安全，同时不会牺牲性能。Rust 程序可以编译成原生二进制代码，其运行速度通常可以与 C 或 C++ 编写的程序相媲美。Rust 从函数式语言如 Haskell 中借鉴了一些概念，例如，变量默认是&lt;strong>不可变的&lt;/strong>，函数是&lt;strong>一等公民&lt;/strong>，可以使用&lt;strong>枚举和 sum 类型&lt;/strong>表示函数可以返回 &lt;code>Ok&lt;/code> 或 &lt;code>Err&lt;/code>。书中还提供了代码示例下载链接和技术问题反馈邮箱。作者感谢了 Rust 社区的贡献，以及家人和朋友的支持。&lt;/p></description></item></channel></rss>

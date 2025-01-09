@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>并发 on 竹简书摘</title><link>https://booslip.rpcx.io/tags/%E5%B9%B6%E5%8F%91/</link><description>Recent content in 并发 on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Sat, 28 Dec 2024 18:58:34 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/tags/%E5%B9%B6%E5%8F%91/index.xml" rel="self" type="application/rss+xml"/><item><title>Async Rust</title><link>https://booslip.rpcx.io/posts/async-rust/</link><pubDate>Sat, 28 Dec 2024 18:58:34 +0800</pubDate><guid>https://booslip.rpcx.io/posts/async-rust/</guid><description>&lt;p>好的，我将按照您的要求，对每个章节的内容进行总结，并尽可能地包含关键代码，使其内容详实且易于理解。&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第一章异步简介" class="pagebody-header">
+ 第一章：异步简介
+ &lt;/h2>
+&lt;/div>&lt;p>本章主要介绍了异步编程的概念以及在Rust中的应用。&lt;/p></description></item><item><title>Rust Atomics and Locks</title><link>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</link><pubDate>Sat, 28 Dec 2024 12:43:47 +0800</pubDate><guid>https://booslip.rpcx.io/posts/rust-atomics-and-locks/</guid><description>&lt;p>&lt;strong>前言&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>本书作者 Mara Bos 在 Rust 标准库团队工作，并有多年并发实时系统开发经验。&lt;/li>
+&lt;li>本书的重点是 Rust 中 &lt;strong>底层的并发&lt;/strong> 实现，而不是高级的抽象。&lt;/li>
+&lt;li>本书适合那些对并发编程的底层机制感兴趣的读者，例如原子操作、锁、内存排序等.&lt;/li>
+&lt;li>本书通过从零开始构建各种并发原语，来深入理解其工作原理.&lt;/li>
+&lt;li>本书的写作灵感来源于 Rust 社区关于并发的讨论，作者希望通过实践来深入理解软件安全特性.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>目录&lt;/strong>&lt;/p></description></item></channel></rss>

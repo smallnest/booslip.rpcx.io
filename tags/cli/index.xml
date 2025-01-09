@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cli on 竹简书摘</title><link>https://booslip.rpcx.io/tags/cli/</link><description>Recent content in Cli on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Sat, 28 Dec 2024 10:14:48 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/tags/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Command Line Rust</title><link>https://booslip.rpcx.io/posts/command-line-rust/</link><pubDate>Sat, 28 Dec 2024 10:14:48 +0800</pubDate><guid>https://booslip.rpcx.io/posts/command-line-rust/</guid><description>&lt;p>书中配套代码：&lt;a href="https://github.com/kyclark/command-line-rust">kyclark/command-line-rust&lt;/a>&lt;/p>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="前言" class="pagebody-header">
+ 前言
+ &lt;/h2>
+&lt;/div>&lt;p>本书作者在前言中分享了他学习编程的经验，强调了&lt;strong>实践的重要性&lt;/strong>。作者认为，仅仅阅读参考书籍是不足以掌握一门编程语言的，需要通过实际编写程序来应用所学知识。作者还提到，&lt;strong>学习如何学习一门语言&lt;/strong>是程序员最重要的技能。Rust 语言在语法上与 C 语言类似，例如 for 循环、分号结尾的语句和用花括号表示的代码块。Rust 通过 &lt;strong>borrow checker&lt;/strong> 来保证内存安全，同时不会牺牲性能。Rust 程序可以编译成原生二进制代码，其运行速度通常可以与 C 或 C++ 编写的程序相媲美。Rust 从函数式语言如 Haskell 中借鉴了一些概念，例如，变量默认是&lt;strong>不可变的&lt;/strong>，函数是&lt;strong>一等公民&lt;/strong>，可以使用&lt;strong>枚举和 sum 类型&lt;/strong>表示函数可以返回 &lt;code>Ok&lt;/code> 或 &lt;code>Err&lt;/code>。书中还提供了代码示例下载链接和技术问题反馈邮箱。作者感谢了 Rust 社区的贡献，以及家人和朋友的支持。&lt;/p></description></item></channel></rss>

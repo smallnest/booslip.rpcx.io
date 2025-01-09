@@ -1,0 +1,116 @@
+<!doctype html><html class="js no-touch progressive-image no-reduced-motion progressive" lang=zh-hans><head><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta http-equiv=X-UA-Compatible content="IE=edge"><link rel=icon href=/img/favicon.ico><meta name=keyword content><meta property="og:url" content="https://booslip.rpcx.io/posts/network-programming-with-go/"><meta property="og:site_name" content="竹简书摘"><meta property="og:title" content="Network Programming With Go"><meta property="og:description" content="Go语言网络编程"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-01-09T18:27:45+08:00"><meta property="article:modified_time" content="2025-01-09T18:27:45+08:00"><title>Network Programming With Go</title>
+<link rel=canonical href=/posts/network-programming-with-go/><link rel=stylesheet href=/css/global.css><link rel=stylesheet href=/css/custom.css><link rel=stylesheet href=/css/search.css><link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel=stylesheet><script>var _hmt=_hmt||[];(function(){var e,t=document.createElement("script");t.src="https://hm.baidu.com/hm.js?c80136b2ed102610dcafb84941e8df30",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(t,e)})()</script></head></head><body class=page-article><header><nav class=nav><div class=nav-wrapper><div class=nav-content-wrapper><div class=nav-content><a href=/ class=nav-title>竹简书摘</a><div class=nav-menu><div class=nav-item-wrapper><a href=/posts class=nav-item-content>书摘</a></div><div class=nav-item-wrapper><a href=/index.xml class=nav-item-content target=_blank>RSS</a></div></div></div></div></div></nav><script>function toggleSearchModal(){const t=`
+    <div class="modal-body">
+      <div id="autocomplete" onclick="event.stopPropagation();"></div>
+    </div>
+    `,e=document.querySelector("#modal-wrapper");if(e)document.body.removeAttribute("style"),document.body.removeChild(e);else{const e=document.createElement("div");document.body.setAttribute("style","overflow: hidden;"),e.setAttribute("id","modal-wrapper"),e.setAttribute("onclick","toggleSearchModal()"),e.innerHTML=t;const n=document.createElement("script");n.setAttribute("src","https://booslip.rpcx.io/js/algolia.js"),e.appendChild(n),document.body.append(e)}}</script></header><main id=main class=main><section><article class=article><div class=article-header><div class="category component"><div class=component-content><div class=category-eyebrow><span class="category-eyebrow__category category_original"></span><span class=category-eyebrow__date>2025年1月9日</span></div></div></div><div class="pagetitle component"><div class=component-content><h1 class=hero-headline>Network Programming With Go</h1></div></div><div class="component article-subhead"><div class=component-content>Go语言网络编程</div></div><div class="tagssheet component"><div class=component-content><a href=/tags/ class=tag></a></div></div></div><div class="book-card component"><div class=book-cover><img data-src=/covers/Network-Programming-With-Go.jpg alt=书籍封面></div><div class=book-info><h1 class=book-title>Network Programming With Go</h1><div class=book-meta><span>作者：Adam Woodbeck</span>
+<span>出版日期：2021-03-25</span>
+<span>出版社：No Starch Press</span></div><div class=book-description>本书《Go语言网络编程》是一本教你如何使用Go语言编写现代网络软件的教程。它涵盖了网络编程的基础知识，包括TCP、UDP和Unix套接字编程，以及HTTP、HTTP/2和TLS协议的使用。书中包含大量的代码示例，帮助读者学习如何构建健壮、安全且可读的网络应用程序，并讨论了网络性能、安全性和可扩展性等重要主题，以及如何在云环境（AWS Lambda，Google Cloud Functions和Azure Functions）中部署Go网络应用。</div></div></div><div class=pagebody><div class="component-content pagebody component"><h2 id=第一部分网络架构 class=pagebody-header><strong>第一部分：网络架构</strong></h2></div><div class="component-content pagebody component"><h3 id=---第一章网络基础 class=pagebody-header>* <strong>第一章：网络基础</strong></h3></div><pre><code>*   网络拓扑结构：
+    *   点对点连接
+    *   菊花链
+    *   总线型拓扑 (常见于无线网络)
+    *   环形拓扑 (数据单向流动，速度受限于最慢节点)
+    *   星型拓扑
+    *   网状拓扑
+    *   混合拓扑 (例如星型-环形、星型-总线)
+*   **OSI 参考模型**的分层结构
+*   **TCP/IP 模型**的分层结构：应用层、传输层、网络层（互联网层）、链路层
+*   数据封装
+*   单播、组播和广播：
+    *   **单播**：一对一通信
+    *   **组播**：将消息发送到一组节点，类似于订阅列表
+    *   **广播**：将消息发送到网络上的所有节点（IPv4）
+    *   **任播**：将消息发送到监听同一地址的最近节点 (IPv6)
+*   Go 标准库和生态系统适合编写安全可靠的网络应用
+</code></pre><div class="component-content pagebody component"><h3 id=---第二章ip寻址 class=pagebody-header>* <strong>第二章：IP寻址</strong></h3></div><pre><code>*   IPv4 地址的结构：主机 ID 和网络 ID
+*   IPv4 地址的子网划分
+*   IPv4 的私有地址范围
+*   IPv6 地址的结构：
+    *   全球路由前缀 (GRP)
+    *   子网 ID
+    *   接口 ID
+    *   链路本地地址
+*   IPv6 的任播地址
+</code></pre><div class="component-content pagebody component"><h2 id=第二部分套接字级编程 class=pagebody-header><strong>第二部分：套接字级编程</strong></h2></div><div class="component-content pagebody component"><h3 id=---第三章tcp协议 class=pagebody-header>* <strong>第三章：TCP协议</strong></h3></div><pre><code>*   TCP 三次握手过程：SYN，SYN/ACK，ACK
+*   使用 Go 的 `net` 包创建 TCP 服务器和客户端
+*   监听 (net.Listen) 和接受连接 (net.Accept)
+*   **绑定 (binding)**：操作系统独占分配端口
+*   客户端拨号连接 (net.Dial)
+*   优雅地关闭连接
+*   使用 `net.Error` 类型来检查临时错误
+*   使用 `net.OpError` 获取更多错误信息
+*   使用 `context` 包进行超时和取消操作
+*   **处理临时错误和超时**
+</code></pre><div class="component-content pagebody component"><h3 id=---第四章发送tcp数据 class=pagebody-header>* <strong>第四章：发送TCP数据</strong></h3></div><pre><code>*   `net.Conn` 接口实现了 `io.ReadWriteCloser` 接口
+*   从固定大小的缓冲区读取数据
+*   使用 `bufio.Scanner` 按分隔符读取数据
+*   **TLV (Type-Length-Value) 编码**：一种动态分配缓冲区大小的方法
+*   处理读取和写入数据时的错误
+*  **使用 `io.Copy` 在连接之间代理数据**
+*   使用 `io.TeeReader` 和 `io.MultiWriter` 监控网络连接
+*   `TCPConn` 对象：控制 Keepalive 消息、处理关闭时的挂起数据、覆盖默认的发送和接收缓冲区
+</code></pre><div class="component-content pagebody component"><h3 id=---第五章不可靠的udp通信 class=pagebody-header>* <strong>第五章：不可靠的UDP通信</strong></h3></div><pre><code>*   UDP 协议的特点：无连接，不可靠
+*   UDP 数据包的结构：源端口、目标端口、数据包长度、校验和、有效负载
+*   使用 `net.ListenPacket` 创建 UDP 连接
+*  使用`ReadFrom` 和 `WriteTo` 发送和接收UDP数据包
+*   **一个 UDP 连接对象可以接收来自多个发送者的数据包**
+*   `net.Conn` 用于管理 UDP 通信时，只从 `net.Dial` 指定的地址读取数据
+</code></pre><div class="component-content pagebody component"><h3 id=---第六章确保udp可靠性 class=pagebody-header>* <strong>第六章：确保UDP可靠性</strong></h3></div><pre><code>*   TFTP (Trivial File Transfer Protocol) 协议用于可靠的文件传输
+*   TFTP 数据包类型：读取请求、数据包、确认包、错误包
+*  **使用`encoding.BinaryMarshaler` 和 `encoding.BinaryUnmarshaler` 进行二进制数据的序列化和反序列化**
+*   数据包重传和超时
+*   避免分片
+</code></pre><div class="component-content pagebody component"><h3 id=---第七章unix-域套接字 class=pagebody-header>* <strong>第七章：Unix 域套接字</strong></h3></div><pre><code>*   Unix 域套接字的三种类型：`unix` (流式)、`unixgram` (数据报式)、`unixpacket` (会话式)
+*   控制 Unix 域套接字的读写权限
+*   使用 `net.Listen` 创建 `unix` 套接字服务器
+*   使用 `net.ListenPacket` 创建 `unixgram` 套接字服务器
+*  使用 `net.Dial` 创建 `unixpacket` 套接字客户端
+*   使用 `os.Chmod` 设置套接字文件权限
+*   使用 `net.AcceptUnix` 获取 `net.UnixConn` 对象
+*   基于用户和组 ID 验证客户端
+</code></pre><div class="component-content pagebody component"><h2 id=第三部分应用级编程 class=pagebody-header><strong>第三部分：应用级编程</strong></h2></div><div class="component-content pagebody component"><h3 id=---第八章http客户端 class=pagebody-header>* <strong>第八章：HTTP客户端</strong></h3></div><pre><code>*   HTTP 协议：客户端发送 URL，服务器返回资源
+*   **HTTP 请求**：方法（GET, POST等）、URL、头部、主体 
+*   **HTTP 响应**：状态码、头部、主体 
+*   使用 `net/http` 包创建 HTTP 客户端 
+*   设置请求头
+*   使用 `multipart/form-data` 上传文件
+*  `http.NewRequestWithContext` 函数
+</code></pre><div class="component-content pagebody component"><h3 id=---第九章构建http服务 class=pagebody-header>* <strong>第九章：构建HTTP服务</strong></h3></div><pre><code>*   Go HTTP 服务器的组成部分：多路复用器、中间件、处理器
+*  `http.ServeMux`：请求多路复用器
+*   **中间件**：在处理器之前或之后执行的函数，用于身份验证、日志记录等
+*  `http.Handler` 接口
+*  `http.HandlerFunc` 类型，简化处理器的定义 
+*  `http.ResponseWriter`：用于写响应
+*  `http.Request`：请求对象
+*   处理客户端输入时需要进行转义
+*   提供静态文件服务 
+*   使用 `http.TimeoutHandler` 设置超时
+*   `Methods`处理器
+</code></pre><div class="component-content component"><ul><li><code>html/template</code> 包用于HTML转义</li></ul></div><div class="component-content pagebody component"><h3 id=---第十章caddy一个现代的web服务器 class=pagebody-header>* <strong>第十章：Caddy：一个现代的Web服务器</strong></h3></div><pre><code>*   Caddy 的特性：自动 HTTPS、配置简单
+*   Caddy 的配置方法：JSON 文件
+*   **Caddy 的配置适配器**：将 TOML 等格式转换为 Caddy 的原生 JSON 格式
+*   **Caddy 的中间件**：实现 `caddyhttp.MiddlewareHandler` 接口
+*   实现自定义中间件
+*   使用 Caddy 作为反向代理
+</code></pre><div class="component-content pagebody component"><h3 id=---第十一章tls class=pagebody-header>* <strong>第十一章：TLS</strong></h3></div><pre><code>*   TLS (Transport Layer Security) 协议：用于加密网络通信
+*   使用 `crypto/tls` 包创建 TLS 连接
+*   **TLS 配置**：证书、密钥、协议版本、密码套件
+*   客户端身份验证：**双向 TLS**
+*   使用 `crypto/x509` 包加载和解析证书
+</code></pre><div class="component-content pagebody component"><h3 id=---第十二章命令行工具 class=pagebody-header>* <strong>第十二章：命令行工具</strong></h3></div><pre><code>*   使用 `flag` 包解析命令行参数
+*   使用 `os` 包读取和写入文件
+*   **Protocol Buffer** (protobuf)：用于序列化结构化数据
+*   **gRPC**：使用 protobuf 的远程过程调用框架
+</code></pre><div class="component-content pagebody component"><h3 id=---第十三章可观察性 class=pagebody-header>* <strong>第十三章：可观察性</strong></h3></div><pre><code>*   **日志记录**：使用 `log` 包
+*   使用 `io.MultiWriter` 将日志写入多个目标
+*   **结构化日志**：使用 `go.uber.org/zap` 包
+    *   Zap 的编码器配置和使用
+    *   Zap 的日志轮换
+*   **度量**：使用 `github.com/go-kit/kit/metrics` 包
+*   使用中间件进行广泛的事件日志记录
+*   使用 `net/http` 的 `ConnState` 字段来监控连接状态
+</code></pre><div class="component-content pagebody component"><h3 id=---第十四章云 class=pagebody-header>* <strong>第十四章：云</strong></h3></div><pre><code>*   在云上部署 Go 应用
+*   **AWS Lambda**：无服务器计算平台
+*   使用 `github.com/aws/aws-lambda-go/lambda` 包
+*   从 RSS feed 获取数据
+</code></pre></div><div id=comments class=utterances><script src=https://utteranc.es/client.js repo=smallnest/booslip.rpcx.io issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></article></section></main><script>var script=document.createElement("script");script.src="https://booslip.rpcx.io/js/initPost.js",document.head.appendChild(script)</script><div class=footer-main><div class="content-body footer-wraper"><div class=footer-box><div class=foot-nav><div class=foot-nav-items><div class=item><div class=logo></div><div class=email>Email: <a href=mailto:smallnest@gmail.com>smallnest@gmail.com</a></div></div><div class="item community"><div class=item-title>社交媒体</div><a href=https://github.com/smallnest target=_blank>Github</a></div><div class="item resources"><div class=item-title>友链</div><a href=https://colobu.com/ target=_blank>鸟窝</a></div></div></div><div class=bottom><div class="item copyright">鸟窝 &copy; 2025 All Rights Reserved.</div></div></div></div></div></body></html>
