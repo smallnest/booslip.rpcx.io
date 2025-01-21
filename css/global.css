@@ -5417,6 +5417,11 @@ html.no-touch.no-reduced-motion .tile.tile-list[data-focus-method=key] .media--v
   /* margin-bottom: 44px */
 }
 
+li .component {
+  margin-top: 0px;
+  /* margin-bottom: 44px */
+}
+
 @media only screen and (max-width: 1068px) {
   .component {
     margin-top: 36px;
