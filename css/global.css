@@ -5422,12 +5422,20 @@ html.no-touch.no-reduced-motion .tile.tile-list[data-focus-method=key] .media--v
     margin-top: 36px;
     margin-bottom: 36px
   }
+
+  li .component{
+    margin-top: 0px
+  }
 }
 
 @media only screen and (max-width: 734px) {
   .component {
     margin-top: 32px;
     margin-bottom: 32px
+  }
+
+  li .component{
+    margin-top: 0px
   }
 }
 
