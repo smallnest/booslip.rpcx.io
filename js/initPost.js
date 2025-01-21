@@ -1,10 +1,10 @@
 (() => {
-  // ns-params:@params
-  var params_default = { baseURL: "https://booslip.rpcx.io/" };
+  // ns-hugo-params:<stdin>
+  var stdin_default = { baseURL: "https://booslip.rpcx.io/" };
 
   // <stdin>
   var scriptMd5 = document.createElement("script");
-  scriptMd5.src = `${params_default.baseURL}js/md5.js`;
+  scriptMd5.src = `${stdin_default.baseURL}js/md5.js`;
   document.head.appendChild(scriptMd5);
   scriptMd5.onload = function() {
     syntaxHighlight();
@@ -12,7 +12,7 @@
   };
   function initLazyLoad() {
     var script = document.createElement("script");
-    script.src = `${params_default.baseURL}js/animation.js`;
+    script.src = `${stdin_default.baseURL}js/animation.js`;
     document.head.appendChild(script);
     script.onload = function() {
       animationElementName = ".image-load";

@@ -1,4 +1,487 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>竹简书摘</title><link>https://booslip.rpcx.io/</link><description>Recent content on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Thu, 09 Jan 2025 19:05:16 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/index.xml" rel="self" type="application/rss+xml"/><item><title>C# 12 Pocket Reference</title><link>https://booslip.rpcx.io/posts/c%23-12-pocket-reference/</link><pubDate>Thu, 09 Jan 2025 19:05:16 +0800</pubDate><guid>https://booslip.rpcx.io/posts/c%23-12-pocket-reference/</guid><description>&lt;p>这本书旨在为 C# 12 程序员提供快速参考。以下是各章节的知识点概要：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>竹简书摘</title><link>https://booslip.rpcx.io/</link><description>Recent content on 竹简书摘</description><generator>Hugo</generator><language>zh-CN</language><copyright>鸟窝</copyright><lastBuildDate>Tue, 21 Jan 2025 18:07:50 +0800</lastBuildDate><atom:link href="https://booslip.rpcx.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Build Your Own Database From Scratch in Go 2nd</title><link>https://booslip.rpcx.io/posts/build-your-own-database-from-scratch-in-go-2nd/</link><pubDate>Tue, 21 Jan 2025 18:07:50 +0800</pubDate><guid>https://booslip.rpcx.io/posts/build-your-own-database-from-scratch-in-go-2nd/</guid><description>&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-00-章导论" class="pagebody-header">
+ &lt;strong>第 00 章：导论&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>本章强调通过&lt;strong>实践&lt;/strong>来掌握数据库的基本原理，而不是陷入复杂的术语。&lt;/li>
+&lt;li>核心学习内容包括：
+&lt;ul>
+&lt;li>&lt;strong>原子性和持久性&lt;/strong>：确保数据更新要么全部成功，要么全部失败，并且更新后的数据能够可靠地保存。&lt;/li>
+&lt;li>基于 &lt;strong>B 树的键值存储&lt;/strong>：使用 B 树作为磁盘数据结构的基础。&lt;/li>
+&lt;li>&lt;strong>关系型数据库构建于键值存储之上&lt;/strong>：理解表和索引如何映射到低级别的 B 树。&lt;/li>
+&lt;li>&lt;strong>并发事务控制&lt;/strong>：管理多个并发事务。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>通过约 3000 行代码逐步构建一个数据库。&lt;/li>
+&lt;li>数据库的核心原理并不复杂，每个人都可以尝试构建。&lt;/li>
+&lt;li>本章提到了 SQLite 在智能手机上的广泛使用，并强调了数据库在崩溃时保护数据的重要性。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-01-章从文件到数据库" class="pagebody-header">
+ &lt;strong>第 01 章：从文件到数据库&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>本章讨论了直接使用文件存储数据时面临的问题，例如在更新过程中崩溃导致的数据损坏。&lt;/li>
+&lt;li>&lt;strong>原子重命名&lt;/strong>：通过将新文件重命名为旧文件的路径来实现原子替换，避免了在原位置更新数据。
+&lt;ul>
+&lt;li>这种方法确保了在更新中断时，可以从旧文件恢复，并且并发读取不会读取到一半写入的数据。&lt;/li>
+&lt;li>重命名操作在文件系统中是原子的，成本与数据大小无关。&lt;/li>
+&lt;li>重命名对于并发读取是原子的，但对于断电不是原子的，需要额外的 &lt;code>fsync&lt;/code> 操作。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>使用校验和进行原子日志更新&lt;/strong>：通过在每个日志条目中添加校验和，可以检测到日志条目的损坏，并确保日志更新的原子性。&lt;/li>
+&lt;li>总结了数据库面临的挑战：
+&lt;ul>
+&lt;li>避免在原位置更新。&lt;/li>
+&lt;li>使用仅追加日志进行增量更新。&lt;/li>
+&lt;li>使用 &lt;code>fsync&lt;/code> 来保证数据持久化。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>提出了需要解决的问题：
+&lt;ul>
+&lt;li>如何索引数据结构并更新它们。&lt;/li>
+&lt;li>如何重用仅追加文件中的空间。&lt;/li>
+&lt;li>如何将日志与索引数据结构结合。&lt;/li>
+&lt;li>如何处理并发。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-02-章索引数据结构" class="pagebody-header">
+ &lt;strong>第 02 章：索引数据结构&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>介绍了三种主要的 SQL 查询类型：
+&lt;ul>
+&lt;li>&lt;strong>扫描整个数据集&lt;/strong>（不使用索引）。&lt;/li>
+&lt;li>&lt;strong>点查询&lt;/strong>（通过特定键查询索引）。&lt;/li>
+&lt;li>&lt;strong>范围查询&lt;/strong>（通过范围查询索引，索引是排序的）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>LSM 树（Log-Structured Merge-Tree）&lt;/strong>：
+&lt;ul>
+&lt;li>通过缓冲更新来减少写入放大，避免每次都重写整个数据集。&lt;/li>
+&lt;li>多层结构，每一层都包含排序的数据。&lt;/li>
+&lt;li>级别呈指数增长，通过合并大小相似的级别来减少写入放大。&lt;/li>
+&lt;li>查询时需要合并来自每一层的结果。&lt;/li>
+&lt;li>使用 Bloom 过滤器优化点查询，减少搜索的级别。&lt;/li>
+&lt;li>删除的键用 tombstone 标记，并在合并过程中回收空间。&lt;/li>
+&lt;li>SSTable（Sorted String Table）、MemTable 和日志是 LSM 树的实现细节。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-03-章b-树和崩溃恢复" class="pagebody-header">
+ &lt;strong>第 03 章：B 树和崩溃恢复&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>B 树&lt;/strong>：
+&lt;ul>
+&lt;li>是一种高度平衡的 n 叉树，所有叶子节点的高度相同。&lt;/li>
+&lt;li>每个节点可以有 2、3 或 4 个子节点的 2-3-4 树是 B 树的一个例子。&lt;/li>
+&lt;li>可以通过排序数组来理解 B 树。&lt;/li>
+&lt;li>只有叶子节点包含值，内部节点包含键，指示子树的键范围。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>维护 B+ 树的三个不变量&lt;/strong>：
+&lt;ul>
+&lt;li>所有叶子节点的高度相同。&lt;/li>
+&lt;li>节点大小受限于一个常量。&lt;/li>
+&lt;li>节点不为空。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>通过拆分节点来增长 B 树&lt;/strong>：当插入导致节点超出大小限制时，将节点拆分为更小的节点，并可能导致父节点也需要拆分，最终导致树的高度增加。&lt;/li>
+&lt;li>&lt;strong>通过合并节点来缩小 B 树&lt;/strong>：删除可能导致空节点，此时需要将空节点与其兄弟节点合并，合并操作也可能传播到根节点，导致树的高度降低。&lt;/li>
+&lt;li>&lt;strong>Copy-on-write B 树&lt;/strong>：
+&lt;ul>
+&lt;li>为了安全地更新 B 树，先复制节点，并在副本上进行修改，更新父节点指向新节点，复制操作传播到根节点，形成新的树根。&lt;/li>
+&lt;li>原树保持不变，可以从旧的根访问。&lt;/li>
+&lt;li>这种方法被称为 copy-on-write 数据结构，也称为不可变或持久性。&lt;/li>
+&lt;li>解决了如何找到树根的问题，并使用空闲列表来复用旧版本的节点。&lt;/li>
+&lt;li>优点包括免费获得快照隔离，以及轻松的崩溃恢复。&lt;/li>
+&lt;li>适用于多读单写并发模型。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>In-place 更新的双写技术&lt;/strong>：
+&lt;ul>
+&lt;li>通过保存更新节点的副本，&lt;code>fsync&lt;/code> 保存的副本，进行原位置更新，并再次 &lt;code>fsync&lt;/code> 更新，实现崩溃恢复。&lt;/li>
+&lt;li>在崩溃后，使用保存的副本来恢复数据结构。&lt;/li>
+&lt;li>双写使更新具有幂等性，允许 DB 重试更新。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>崩溃恢复的原则&lt;/strong>：确保在任何时候都有足够的信息来恢复到旧状态或新状态。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-04-章b-树节点和插入" class="pagebody-header">
+ &lt;strong>第 04 章：B+ 树节点和插入&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>B+ 树节点的设计&lt;/strong>：所有 B+ 树节点大小相同，以便使用空闲列表。
+&lt;ul>
+&lt;li>节点包含固定大小的头部，包括节点类型和键的数量。&lt;/li>
+&lt;li>内部节点包含指向子节点的指针列表。&lt;/li>
+&lt;li>节点包含键值对列表和指向键值对的偏移列表，用于二分查找。&lt;/li>
+&lt;li>简化了实现，仅关注基本原理。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>数据结构与 IO 解耦&lt;/strong>：使用回调来抽象空间分配和释放，在数据结构和 DB 的其余部分之间建立边界。&lt;/li>
+&lt;li>&lt;strong>节点格式&lt;/strong>：
+&lt;ul>
+&lt;li>头部：节点类型 (2B) 和键的数量 (2B)。&lt;/li>
+&lt;li>子节点指针：&lt;code>nkeys * 8B&lt;/code>。&lt;/li>
+&lt;li>键值对偏移量：&lt;code>nkeys * 2B&lt;/code>。&lt;/li>
+&lt;li>键值对：&lt;code>klen (2B) | vlen (2B) | key | val&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>节点更新&lt;/strong>：在叶子节点插入键值对时，使用 &lt;code>nodeLookupLE&lt;/code> 找到插入位置，然后将所有内容复制到包含新键的新节点中。&lt;/li>
+&lt;li>&lt;strong>节点拆分&lt;/strong>：
+&lt;ul>
+&lt;li>当节点过大时，将其拆分为 2 或 3 个节点。&lt;/li>
+&lt;li>&lt;code>nodeSplit2&lt;/code> 将节点拆分为两个。&lt;/li>
+&lt;li>&lt;code>nodeSplit3&lt;/code> 将节点拆分为最多三个。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>B+ 树插入&lt;/strong>：从根节点开始进行键查找，直到到达叶子节点，然后执行插入操作，可能会导致节点拆分。
+&lt;ul>
+&lt;li>&lt;code>treeInsert&lt;/code> 函数递归地插入键值对。&lt;/li>
+&lt;li>&lt;code>nodeInsert&lt;/code> 函数处理内部节点的插入。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-05-章b-树删除和测试" class="pagebody-header">
+ &lt;strong>第 05 章：B+ 树删除和测试&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>高层接口&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;code>Insert&lt;/code> 函数用于插入新键或更新现有键。&lt;/li>
+&lt;li>&lt;code>Delete&lt;/code> 函数用于删除键，并返回键是否存在。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>维护根节点&lt;/strong>：
+&lt;ul>
+&lt;li>如果树为空，则创建根节点。&lt;/li>
+&lt;li>如果根节点拆分，则添加新的根节点。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>哨兵值&lt;/strong>：在创建第一个根时插入一个空键，以消除边缘情况。&lt;/li>
+&lt;li>&lt;strong>合并条件&lt;/strong>：删除可能导致空节点，此时可以将空节点与兄弟节点合并。
+&lt;ul>
+&lt;li>&lt;code>shouldMerge&lt;/code> 函数判断是否应该与兄弟节点合并。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>测试 B+ 树&lt;/strong>：
+&lt;ul>
+&lt;li>使用内存模拟页面的方式来测试 B+ 树。&lt;/li>
+&lt;li>&lt;code>C&lt;/code> 结构体包含一个 &lt;code>BTree&lt;/code>，一个引用数据 &lt;code>ref&lt;/code> 和一个内存页面的映射 &lt;code>pages&lt;/code>。&lt;/li>
+&lt;li>使用 &lt;code>C.pages&lt;/code> 来验证指针并读取页面。&lt;/li>
+&lt;li>验证结构是否有效（键是否排序，节点大小是否在限制内）和数据是否与引用匹配。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-06-章仅追加键值存储" class="pagebody-header">
+ &lt;strong>第 06 章：仅追加键值存储&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>基于文件的键值存储&lt;/strong>：
+&lt;ul>
+&lt;li>使用 copy-on-write B+ 树，并使用文件作为持久化存储。&lt;/li>
+&lt;li>文件是仅追加的，空间重用将在下一章节讨论。&lt;/li>
+&lt;li>忽略并发，假设在一个进程内进行顺序访问。&lt;/li>
+&lt;li>实现了处理磁盘页面的三个 B+ 树回调。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>两阶段更新&lt;/strong>：
+&lt;ul>
+&lt;li>先写入新节点，&lt;code>fsync&lt;/code> 来保证顺序。&lt;/li>
+&lt;li>然后原子地更新根指针，再次 &lt;code>fsync&lt;/code> 来使一切持久化。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>使用日志的持久性&lt;/strong>：
+&lt;ul>
+&lt;li>双写方案也需要两个 &lt;code>fsync&lt;/code> 阶段。&lt;/li>
+&lt;li>双写类似于日志，只需要一个 &lt;code>fsync&lt;/code> 进行更新。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>内存数据的并发&lt;/strong>：
+&lt;ul>
+&lt;li>可以使用互斥锁或原子 CPU 指令实现内存数据的原子性。&lt;/li>
+&lt;li>内存数据的可见性需要内存屏障，类似于 &lt;code>fsync&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>文件布局&lt;/strong>：
+&lt;ul>
+&lt;li>数据库是一个文件，分为多个页面。&lt;/li>
+&lt;li>第一页是元页面，包含指向最新根节点的指针和辅助数据。&lt;/li>
+&lt;li>新节点以日志形式追加，文件的页面数量存储在元页面中。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>目录上的 &lt;code>fsync&lt;/code>&lt;/strong>：在创建新文件后，需要在父目录上执行 &lt;code>fsync&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>&lt;code>mmap&lt;/code>、页面缓存和 IO&lt;/strong>：&lt;code>mmap&lt;/code> 允许像内存缓冲区一样读写文件，磁盘 IO 是隐式和自动的。&lt;/li>
+&lt;li>&lt;strong>管理磁盘页面&lt;/strong>：使用 &lt;code>mmap&lt;/code> 实现页面管理回调。&lt;/li>
+&lt;li>&lt;strong>元页面&lt;/strong>：元页面包含魔术字节、根指针和页面使用数量，并使用 &lt;code>saveMeta&lt;/code> 和 &lt;code>loadMeta&lt;/code> 函数来保存和加载。
+&lt;ul>
+&lt;li>使用 &lt;code>pwrite&lt;/code> 原子地更新元页面。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>错误处理&lt;/strong>：
+&lt;ul>
+&lt;li>IO 错误后，可以回滚到旧的树根。&lt;/li>
+&lt;li>需要处理临时写入错误。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-07-章空闲列表回收和重用" class="pagebody-header">
+ &lt;strong>第 07 章：空闲列表：回收和重用&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>内存管理技术&lt;/strong>：讨论了手动和自动内存管理，以及如何重用未使用的对象。&lt;/li>
+&lt;li>&lt;strong>空闲列表&lt;/strong>：存储未使用的页面列表，以便重用。&lt;/li>
+&lt;li>&lt;strong>嵌入式链表&lt;/strong>：最简单的方案是在对象内部嵌入链表指针，但与 copy-on-write 冲突。&lt;/li>
+&lt;li>&lt;strong>空闲列表磁盘布局&lt;/strong>：每个节点都包含指向下一个节点的指针，项目追加到尾节点，并从头节点消费。&lt;/li>
+&lt;li>&lt;strong>更新空闲列表节点&lt;/strong>：列表节点的更新是在原位置进行的，但在页面内部是追加的，不需要额外的崩溃恢复。&lt;/li>
+&lt;li>&lt;strong>空闲列表接口&lt;/strong>：&lt;code>FreeList&lt;/code> 结构体包含页面管理回调和元数据。
+&lt;ul>
+&lt;li>&lt;code>PopHead&lt;/code> 函数从列表头部获取一个项目。&lt;/li>
+&lt;li>&lt;code>PushTail&lt;/code> 函数将项目添加到尾部。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>空闲列表数据结构&lt;/strong>：
+&lt;ul>
+&lt;li>使用 &lt;code>headSeq&lt;/code> 和 &lt;code>tailSeq&lt;/code> 作为单调递增的索引。&lt;/li>
+&lt;li>&lt;code>SetMaxSeq&lt;/code> 函数设置 &lt;code>maxSeq&lt;/code>，以防止消耗新添加的项目。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>从空闲列表消费&lt;/strong>：&lt;code>flPop&lt;/code> 函数从头部删除一个项目，并移动到下一个节点。&lt;/li>
+&lt;li>&lt;strong>推送到空闲列表&lt;/strong>：&lt;code>PushTail&lt;/code> 函数将项目追加到尾部节点，如果尾部节点满了，则添加新的空尾部节点。&lt;/li>
+&lt;li>&lt;strong>带空闲列表的 KV&lt;/strong>：
+&lt;ul>
+&lt;li>页面管理现在可以使用空闲列表。&lt;/li>
+&lt;li>&lt;code>pageAlloc&lt;/code> 函数优先使用空闲列表，再追加页面。&lt;/li>
+&lt;li>&lt;code>pageWrite&lt;/code> 函数返回一个可写的页面副本。&lt;/li>
+&lt;li>&lt;code>pageRead&lt;/code> 函数优先从待更新映射中读取，再从文件中读取.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>更新元页面&lt;/strong>：元页面现在包括空闲列表指针，和树根一起原子更新。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-08-章键值存储上的表" class="pagebody-header">
+ &lt;strong>第 08 章：键值存储上的表&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>将行编码为 KV&lt;/strong>：
+&lt;ul>
+&lt;li>在关系型数据库中，数据被建模为二维表，由行和列组成。&lt;/li>
+&lt;li>定义了 &lt;code>Record&lt;/code> 结构体来表示表行。&lt;/li>
+&lt;li>定义了 &lt;code>TableDef&lt;/code> 结构体来表示表模式。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>内部表&lt;/strong>：
+&lt;ul>
+&lt;li>使用预定义的内部表来存储表模式。&lt;/li>
+&lt;li>&lt;code>TDEF_TABLE&lt;/code> 表存储表定义。&lt;/li>
+&lt;li>&lt;code>TDEF_META&lt;/code> 表存储自动递增的计数器。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>获取、更新、插入、删除、创建&lt;/strong>：
+&lt;ul>
+&lt;li>提供了读取和写入单行的接口。&lt;/li>
+&lt;li>&lt;code>DB&lt;/code> 结构体是 &lt;code>KV&lt;/code> 的包装器。&lt;/li>
+&lt;li>使用 &lt;code>decodeValues&lt;/code> 函数将值解码为列。&lt;/li>
+&lt;li>使用 &lt;code>checkRecord&lt;/code> 函数重新排序记录并检查缺少的列。&lt;/li>
+&lt;li>使用 &lt;code>encodeKey&lt;/code> 函数对 KV 的键进行编码。&lt;/li>
+&lt;li>使用 &lt;code>getTableDef&lt;/code> 函数获取表模式。&lt;/li>
+&lt;li>&lt;code>dbGet&lt;/code> 函数从内部表读取表定义。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>插入或更新行&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;code>INSERT&lt;/code>、&lt;code>UPDATE&lt;/code> 和 &lt;code>UPSERT&lt;/code> 语句在处理现有行方面有所不同。&lt;/li>
+&lt;li>使用 &lt;code>MODE_UPSERT&lt;/code>、&lt;code>MODE_UPDATE_ONLY&lt;/code> 和 &lt;code>MODE_INSERT_ONLY&lt;/code> 标志来区分。&lt;/li>
+&lt;li>&lt;code>dbUpdate&lt;/code> 函数处理行的插入和更新。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>创建表&lt;/strong>：
+&lt;ul>
+&lt;li>创建表的过程包括检查重复名称，读取和更新表前缀计数器，并将模式插入到 &lt;code>@table&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>迭代器接口&lt;/strong>：
+&lt;ul>
+&lt;li>使用 &lt;code>SeekLE&lt;/code> 函数查找小于或等于输入键的最接近位置。&lt;/li>
+&lt;li>使用 &lt;code>BIter&lt;/code> 结构体表示 B+ 树的位置，使用 &lt;code>Deref&lt;/code> 函数获取当前 KV 对，使用 &lt;code>Valid&lt;/code> 函数判断是否有效，使用 &lt;code>Prev&lt;/code> 和 &lt;code>Next&lt;/code> 函数向后和向前移动。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-09-章范围查询" class="pagebody-header">
+ &lt;strong>第 09 章：范围查询&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>范围查询&lt;/strong>：介绍了 &lt;code>Scan&lt;/code> 接口，用于执行范围查询。&lt;/li>
+&lt;li>&lt;strong>顺序保留编码&lt;/strong>：为了支持范围查询，序列化的键必须按照它们的数据类型进行比较。
+&lt;ul>
+&lt;li>将无符号整数编码为大端整数。&lt;/li>
+&lt;li>将有符号整数转换为无符号整数并翻转符号位。&lt;/li>
+&lt;li>使用转义字符来编码字符串，并在末尾添加分隔符。&lt;/li>
+&lt;li>通过逐列比较来处理多列比较。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>范围查询&lt;/strong>：&lt;code>Scanner&lt;/code> 结构体是 B+ 树迭代器的包装器。
+&lt;ul>
+&lt;li>&lt;code>dbScan&lt;/code> 函数选择合适的索引，然后执行查询。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>将缺失的列编码为无穷大&lt;/strong>：使用 &lt;code>&amp;quot;\xff&amp;quot;&lt;/code> 作为 &lt;code>+∞&lt;/code>，使用 &lt;code>&amp;quot;&amp;quot;&lt;/code> 作为 &lt;code>-∞&lt;/code>。
+&lt;ul>
+&lt;li>通过添加列类型代码作为标签，来支持前缀列上的范围查询。&lt;/li>
+&lt;li>使用 &lt;code>encodeKeyPartial&lt;/code> 函数为输入范围进行编码。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-10-章二级索引" class="pagebody-header">
+ &lt;strong>第 10 章：二级索引&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>二级索引&lt;/strong>：通过在更新时删除旧的索引键并插入新的索引键来维护二级索引。&lt;/li>
+&lt;li>&lt;strong>多键更新的原子性&lt;/strong>：多个键涉及的更新会丢失原子性，需要回滚到之前的状态。&lt;/li>
+&lt;li>&lt;strong>事务接口&lt;/strong>：
+&lt;ul>
+&lt;li>添加 &lt;code>Begin&lt;/code>、&lt;code>Commit&lt;/code> 和 &lt;code>Abort&lt;/code> 接口来允许原子执行一组操作。&lt;/li>
+&lt;li>使用 copy-on-write 来实现原子性，commit 和 rollback 都只是更新根指针。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>替代方案&lt;/strong>：使用日志来实现原子性，在日志 &lt;code>fsync&lt;/code> 后，DB 可以将成功返回给客户端。&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-11-章原子事务" class="pagebody-header">
+ &lt;strong>第 11 章：原子事务&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>将树操作移动到事务&lt;/strong>：将树操作与事务关联，并将它们移动到 &lt;code>KVTX&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>事务表操作&lt;/strong>：为基于表的接口添加包装类型 &lt;code>DBTX&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>可选择的优化&lt;/strong>：
+&lt;ul>
+&lt;li>减少多键更新时的复制.&lt;/li>
+&lt;li>压缩公共前缀。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-12-章并发控制" class="pagebody-header">
+ &lt;strong>第 12 章：并发控制&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>并发级别&lt;/strong>：
+&lt;ul>
+&lt;li>讨论了并发客户端的事务操作，区分了只读事务和读写事务。&lt;/li>
+&lt;li>介绍了读者-写者锁（RWLock）。&lt;/li>
+&lt;li>介绍了读取-复制-更新（RCU）。&lt;/li>
+&lt;li>介绍了乐观并发控制和悲观并发控制。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>快照隔离&lt;/strong>：使用 copy-on-write，事务操作在 B+ 树的快照上。
+&lt;ul>
+&lt;li>&lt;code>KVTX&lt;/code> 结构体包含一个只读快照和本地更新。&lt;/li>
+&lt;li>&lt;code>Get&lt;/code> 函数首先从 &lt;code>KVTX.pending&lt;/code> 中读取，然后从 &lt;code>KVTX.snapshot&lt;/code> 中读取。&lt;/li>
+&lt;li>&lt;code>CombinedIter&lt;/code> 结构体用于合并两个树的范围查询。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>空闲列表中的版本号&lt;/strong>：
+&lt;ul>
+&lt;li>为每个版本分配一个单调递增的版本号。&lt;/li>
+&lt;li>空闲列表永远不会给出比最旧事务更新的页面。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>处理写入冲突&lt;/strong>：
+&lt;ul>
+&lt;li>将所有读取添加到 &lt;code>KVTX.reads&lt;/code>。&lt;/li>
+&lt;li>将每个成功提交添加到 &lt;code>KV.history&lt;/code>。&lt;/li>
+&lt;li>使用 &lt;code>detectConflicts&lt;/code> 函数检测冲突。&lt;/li>
+&lt;li>序列化内部数据结构。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-13-章sql-解析器" class="pagebody-header">
+ &lt;strong>第 13 章：SQL 解析器&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>语法、解析器和解释器&lt;/strong>：
+&lt;ul>
+&lt;li>查询语言是解析为树结构用于进一步处理的字符串。&lt;/li>
+&lt;li>示例：SELECT 语句和表达式的树表示。&lt;/li>
+&lt;li>通过访问树节点来评估表达式.&lt;/li>
+&lt;li>介绍了 &lt;code>INDEX BY&lt;/code> 和 &lt;code>FILTER&lt;/code> 子句。&lt;/li>
+&lt;li>使用 &lt;code>QLNode&lt;/code> 结构体表示表达式树节点.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>递归下降&lt;/strong>：
+&lt;ul>
+&lt;li>每个语句都被划分为更小的部分，包括表达式节点 &lt;code>QLNode&lt;/code>.&lt;/li>
+&lt;li>&lt;code>QLSelect&lt;/code>、&lt;code>QLUpdate&lt;/code> 和 &lt;code>QLDelete&lt;/code> 结构体表示不同类型的语句。&lt;/li>
+&lt;li>顶级解析器函数 &lt;code>pStmt&lt;/code> 确定语句的类型，然后将其分派给具体的函数。&lt;/li>
+&lt;li>&lt;code>pKeyword&lt;/code> 函数匹配和消耗输入中的关键字。&lt;/li>
+&lt;li>将输入分成越来越小的部分，直到结束为一个操作符、名称或文字值。&lt;/li>
+&lt;li>使用递归将中缀操作符转换为二叉树。&lt;/li>
+&lt;li>&lt;code>pExprOr&lt;/code> 是解析表达式的最高级函数，调用 &lt;code>pExprAnd&lt;/code> 等低优先级函数。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+
+&lt;div class="component-content pagebody component">
+ &lt;h2 id="第-14-章查询语言" class="pagebody-header">
+ &lt;strong>第 14 章：查询语言&lt;/strong>
+ &lt;/h2>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>表达式评估&lt;/strong>：使用 &lt;code>QLEvalContex&lt;/code> 结构体评估表达式。
+&lt;ul>
+&lt;li>&lt;code>qlEval&lt;/code> 函数评估表达式树。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>范围查询&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;code>QLScan&lt;/code> 结构体表示一个范围查询。&lt;/li>
+&lt;li>&lt;code>qlScanInit&lt;/code> 函数初始化扫描器，将 &lt;code>QLNode&lt;/code> 转换为 &lt;code>Record&lt;/code> 和 &lt;code>CMP_??&lt;/code>。&lt;/li>
+&lt;li>根据 &lt;code>Key1&lt;/code> 和 &lt;code>Key2&lt;/code> 的类型来设置比较操作符。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>重新审视无穷大编码&lt;/strong>：使用空元组来处理仅使用前缀的查询。
+&lt;ul>
+&lt;li>使用 &lt;code>covered&lt;/code> 函数来判断索引是否覆盖。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>结果迭代器&lt;/strong>：
+&lt;ul>
+&lt;li>&lt;code>RecordIter&lt;/code> 接口定义了迭代器的通用接口。&lt;/li>
+&lt;li>&lt;code>qlSelectIter&lt;/code> 结构体用于在 SELECT 中计算表达式。&lt;/li>
+&lt;li>&lt;code>qlScanIter&lt;/code> 结构体处理过滤。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>结论和下一步&lt;/strong>：总结了实现的多个接口，以及下一步的计划。
+&lt;ul>
+&lt;li>创建一个网络协议，让 DB 在不同的进程或机器上运行。&lt;/li>
+&lt;li>创建一门编程语言并编译为机器代码。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>C# 12 Pocket Reference</title><link>https://booslip.rpcx.io/posts/c%23-12-pocket-reference/</link><pubDate>Thu, 09 Jan 2025 19:05:16 +0800</pubDate><guid>https://booslip.rpcx.io/posts/c%23-12-pocket-reference/</guid><description>&lt;p>这本书旨在为 C# 12 程序员提供快速参考。以下是各章节的知识点概要：&lt;/p>
 
 &lt;div class="component-content pagebody component">
  &lt;h2 id="第一章c-初体验" class="pagebody-header">

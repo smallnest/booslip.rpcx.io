@@ -1,5 +1,5 @@
 (() => {
-  // ns-params:@params
+  // ns-hugo-params:<stdin>
   var baseURL = "https://booslip.rpcx.io/";
   var params = { blogroll: [{ name: "\u9E1F\u7A9D", url: "https://colobu.com/" }], defaultcover: "https://booslip.rpcx.io/covers/bamboo.jpg", email: "smallnest@gmail.com", showcopyright: false, showmore: true, showrss: true, socialmedia: [{ name: "Github", url: "https://github.com/smallnest" }], utterances: true };
 
